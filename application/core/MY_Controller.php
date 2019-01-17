@@ -55,8 +55,9 @@ class MY_Controller extends REST_Controller
             load_helper('development/cli');
         }
 
+        // Check to make sure we are running on PHP >= 7.2.0
         if (PHP_VERSION < '7.2.0') {
-            die('PHP Version of 7.2.0 is required.Your PHP Version is ' . PHP_VERSION);
+            die('PHP Version of 7.2.0 is required. Your PHP Version is ' . PHP_VERSION);
         }
     }
 
