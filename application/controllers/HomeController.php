@@ -4,7 +4,7 @@
  * The Home Controller Class is used to demonstrate how to interact with
  * a basic REST API endpoint
  */
-class HomeController extends REST_Controller
+class HomeController extends MY_Controller
 {
     /**
      * Index method
