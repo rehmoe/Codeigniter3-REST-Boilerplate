@@ -1,0 +1,79 @@
+<?php defined('BASEPATH') || exit(HTTP_UNAUTHORIZED);
+
+/**
+ * Class MY_Controller
+ */
+class MY_Controller extends REST_Controller
+{
+    /**
+     * Data array
+     *
+     * @var array $data
+     */
+    public $data;
+
+    /**
+     * CodeIgniter session library [autoloaded]
+     *
+     * @var \CI_Session $session
+     */
+    public $session;
+
+    /**
+     * Database model
+     *
+     * @var mixed $model
+     */
+    public $model;
+
+    /**
+     * The JWT library [autoloaded]
+     *
+     * @var \JWT $jwt
+     */
+    public $jwt;
+
+    /**
+     * Bcrypt library instance
+     *
+     * @var Bcrypt $bcrypt
+     */
+    public $bcrypt;
+
+    // ------------------------------------------------------------------------
+
+    /**
+     * Build application controller components upon class construction
+     *
+     * @param  string $config Optional REST Library config file
+     *
+     * @throws Exception
+     */
+    public function __construct(string $config = 'rest')
+    {
+        // REST_Controller Constructor
+        parent::__construct($config);
+
+        /*
+         * Load the CLI helper in development environments and only on CLI
+         * requests
+         */
+        if (is_cli() && ENVIRONMENT === 'development') {
+            load_helper('development/cli');
+        }
+    }
+
+    // ------------------------------------------------------------------------
+
+    /**
+     * Unset the $data array upon class destruction
+     */
+    public function __destruct()
+    {
+        parent::__destruct();
+
+        unset($this->data);
+    }
+
+    // ------------------------------------------------------------------------
+}
