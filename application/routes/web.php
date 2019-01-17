@@ -13,10 +13,6 @@ Route::group('/', function() {
     Route::get('/home',       'HomeController@index_get');
     Route::get('/home/index', 'HomeController@index_get');
 });
-Route::group('/jwt', function() {
-    Route::get('/encode',   'HomeController@jwt_encode');
-    Route::get('/decode',   'HomeController@jwt_decode');
-});
 
 // `404 Override`
 Route::set('404_override', function () {
