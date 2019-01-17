@@ -11,6 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
+// Luthier-CI
+$hook = Luthier\Hook::getHooks();
 
 /**
  * ----------------------------------------------------------------------------
@@ -46,5 +48,3 @@ $hook['pre_system'][] = [
     'params'   => [],
 ];
 
-// Luthier-CI
-$hook = Luthier\Hook::getHooks();

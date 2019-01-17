@@ -10,13 +10,14 @@ use Dotenv\Dotenv;
  * @package  Hooks
  * @author   Jason Napolitano <jnapolitanoit@gmail.com>
  * @license  MIT License
+ * @link     https://github.com/vlucas/phpdotenv
  */
 class DotEnvHook
 {
     /**
      * The \Dotenv library instance
      *
-     * @var Dotenv\Dotenv
+     * @var \Dotenv\Dotenv
      */
     protected $dotEnv;
 
@@ -26,11 +27,17 @@ class DotEnvHook
      * Let's get PHP DotEnv setup and initialized
      *
      * @return void
+     *
+     * @see    \Dotenv\Dotenv::create()
+     * @see    \Dotenv\Dotenv::load()
+     *
+     * @throws \Dotenv\Exception\InvalidFileException
+     * @throws \Dotenv\Exception\InvalidPathException
      */
     public function bootDotEnv(): void
     {
         // Load the file
-        $this->dotEnv = new Dotenv(FCPATH, '.env');
+        $this->dotEnv = Dotenv::create(FCPATH);
         // Load PhpDotEnv
         $this->dotEnv->load();
     }

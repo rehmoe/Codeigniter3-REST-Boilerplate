@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
+// Luthier-CI
+$hook = Luthier\Hook::getHooks();
+
 /**
  * ----------------------------------------------------------------------------
  * PhpDotEnv Hook
@@ -27,6 +30,3 @@ $hook['pre_system'][] = [
     'filepath' => 'hooks',
     'params'   => [],
 ];
-
-// Luthier-CI
-$hook = Luthier\Hook::getHooks();
