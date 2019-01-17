@@ -33,13 +33,6 @@ class MY_Controller extends REST_Controller
      */
     public $jwt;
 
-    /**
-     * Bcrypt library instance
-     *
-     * @var Bcrypt $bcrypt
-     */
-    public $bcrypt;
-
     // ------------------------------------------------------------------------
 
     /**
