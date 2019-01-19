@@ -107,9 +107,10 @@ $ php -S localhost:8080
 ```
 Navigate to localhost:8080 to run the development server
 
-### NOTES:
-- Make sure to rename the `public_html/.env.example` file to `public_html/.env`
-- Run `$ cd path/to/application` and then run the `composer install` command to install the dependencies needed for this repo
+### INSTALL NOTES:
+1. Rrename the `.env.example` file to `.env` in the `public_html` directory
+2. `$ cd path/to/application` and then run the `composer install` command
+### OTHER NOTES:
 - Update files manually that exist inside of the `application` folder as well as a modified version of the `index.php` 
  file if it exists
   - Check the [CodeIgniter User Guide](http://www.codeigniter.com/user_guide/installation/upgrading.html) for more information.
