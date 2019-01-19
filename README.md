@@ -108,8 +108,7 @@ $ php -S localhost:8080
 Navigate to localhost:8080 to run the development server
 
 ### INSTALL NOTES:
-1. Rrename the `.env.example` file to `.env` in the `public_html` directory
-2. `$ cd path/to/application` and then run the `composer install` command
+1. `$ cd path/to/application` and then run the `composer install` command
 ### OTHER NOTES:
 - Update files manually that exist inside of the `application` folder as well as a modified version of the `index.php` 
  file if it exists
