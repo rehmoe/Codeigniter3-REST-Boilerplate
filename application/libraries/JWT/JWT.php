@@ -4,14 +4,14 @@
  * Library for a JSON Web Token implementation based on the JWT Spec
  *
  * @category Libraries
+ * @author   luciferous <https://github.com/luciferous>
  * @author   Jason Napolitano <jnapolitanoit@gmail.com>
- * @updated  12.04.2018
+ * @updated  01.18.2018
  *
- * @license  2-clause BSD
- * @version  1.0.1 [major.minor.patch]
- * @since    1.0.0 [major.minor.patch]
+ * @license  MIT
  *
  * @link     https://opensource.org/licenses/BSD-2-Clause
+ * @link     https://github.com/luciferous/jwt/blob/master/JWT.php
  *
  * Read about the JWT Specification Here
  * @link     https://tools.ietf.org/html/rfc7519
