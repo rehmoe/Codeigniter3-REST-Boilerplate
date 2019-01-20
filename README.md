@@ -107,20 +107,20 @@ $ php -S localhost:8080
 ```
 Navigate to localhost:8080 to run the development server
 
-### INSTALL NOTES:
+## INSTALL NOTES
 1. Clone or download this repo into your directory of choice
 2. Ensure that your web server 'points' to the `public_html` directory
  - Do NOT access the `public_html` directory directly from your browser [EG - `http:/mysite.com/public_html/`]. Always set your web server to 'point' to your `public_html` directory. This is done for security reasons.
 3. `$ cd path/to/application` and then run the `composer install` command
 4. Access your new API and Enjoy!
 
-### OTHER NOTES:
+## OTHER NOTES
 - Please read the docs of the Luthier-CI package if you've questions regarding routing and middleware. You can find the docs for that plugin [here](https://github.com/ingeniasoftware/luthier-ci)
 - Update files manually that exist inside of the `application` folder as well as a modified version of the `index.php` 
  file if it exists
   - Check the [CodeIgniter User Guide](http://www.codeigniter.com/user_guide/installation/upgrading.html) for more information.
 
-### CLI Commands
+## CLI Commands
 To execute the following commands: `$ cd public_html` directory and run:
 
 ````
@@ -151,7 +151,18 @@ $ php index.php luthier migrate [version?=latest]
 ```` 
 Where version is the version of the migration to run. If it's omitted, it will proceed to migrate to the latest available version.
 
-NOTE: It's also possible to use one of these special values as version:
+Examples
+````
+$ php index.php luthier migrate version
+````
+This will migrate to the latest available version
+
+````
+$ php index.php luthier migrate version 20170706025420
+````
+This will run the  `20170706025420_create_table_users` migration file
+
+It's also possible to use one of these special values as version:
 
  - reverse: reverses ALL migrations
  - refresh: reverses ALL migrations and then proceeds to migrate to the latest available version
