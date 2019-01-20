@@ -143,3 +143,19 @@ $ php index.php luthier make middleware MiddlewareName
 $ php index.php luthier make migration create_users_table
 $ php index.php luthier make migration create_users_table date
 $ php index.php luthier make migration create_users_table sequential
+````
+
+To run migrations:
+````
+$ php index.php luthier migrate
+````
+It's also possible to use one of these special values as version:
+
+ - reverse: reverses ALL migrations
+ - refresh: reverses ALL migrations and then proceeds to migrate to the latest available version
+
+Examples
+````
+$ php index.php luthier migrate reverse
+$ php index.php luthier migrate refresh
+````
