@@ -115,3 +115,26 @@ Navigate to localhost:8080 to run the development server
  file if it exists
   - Check the [CodeIgniter User Guide](http://www.codeigniter.com/user_guide/installation/upgrading.html) for more information.
 
+### CLI Commands
+To execute the following commands: `$ cd public_html` directory and run:
+
+````
+// Creating a controller:
+$ php index.php luthier make controller ControllerName
+
+// Creating a model:
+$ php index.php luthier make model ModelName
+
+// Creating a library:
+$ php index.php luthier make library LibraryName
+
+// Creating a helper:
+$ php index.php luthier make helper HelperName
+
+// Creating a middleware:
+$ php index.php luthier make middleware MiddlewareName
+
+// Creating a migration (by default, migrations are created by date)
+$ php index.php luthier make migration create_users_table
+$ php index.php luthier make migration create_users_table date
+$ php index.php luthier make migration create_users_table sequential
