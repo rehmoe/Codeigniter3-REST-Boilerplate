@@ -27,7 +27,15 @@ I hope everyone enjoys this and finds it useful. Please feel free to offer
   the composer dependencies goes to their respective authors. Without their
    work, this would've been a lot more difficult of an approach =)
 
-# README:
+# T.O.C (Table of Contents)
+ - [Folder Structure](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#folder-structure)
+ - [Useful Links](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#useful-links)
+ - [Requirements](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#requirements)
+ - [What's Included](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#includes)
+ - [Project Setup](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#project-setup)
+ - [Install notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#install-notes)
+ - [Other notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#other-notes)
+ - [CLI Commands](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#cli-commands)
 
 ## Folder Structure
 
@@ -107,14 +115,14 @@ $ php -S localhost:8080
 ```
 Navigate to localhost:8080 to run the development server
 
-## INSTALL NOTES
+## Install notes
 1. Clone or download this repo into your directory of choice
 2. Ensure that your web server 'points' to the `public_html` directory
  - Do NOT access the `public_html` directory directly from your browser [EG - `http:/mysite.com/public_html/`]. Always set your web server to 'point' to your `public_html` directory. This is done for security reasons.
 3. `$ cd path/to/application` and then run the `composer install` command
 4. Access your new API and Enjoy!
 
-## OTHER NOTES
+## Other notes
 - Please read the docs of the Luthier-CI package if you've questions regarding routing and middleware. You can find the docs for that plugin [here](https://github.com/ingeniasoftware/luthier-ci)
 - Update files manually that exist inside of the `application` folder as well as a modified version of the `index.php` 
  file if it exists
