@@ -147,9 +147,11 @@ $ php index.php luthier make migration create_users_table sequential
 
 To run migrations:
 ````
-$ php index.php luthier migrate
-````
-It's also possible to use one of these special values as version:
+$ php index.php luthier migrate [version?=latest]
+```` 
+Where version is the version of the migration to run. If it's omitted, it will proceed to migrate to the latest available version.
+
+NOTE: It's also possible to use one of these special values as version:
 
  - reverse: reverses ALL migrations
  - refresh: reverses ALL migrations and then proceeds to migrate to the latest available version
