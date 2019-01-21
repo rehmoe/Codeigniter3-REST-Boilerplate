@@ -39,7 +39,7 @@ class SessionController extends MY_Controller
         $this->data
             ? $this->response((array)$this->data)
             : $this->response([
-                'message' => 'Record Not Found',
+                'message' => 'Records Not Found',
                 'success' => false,
                 'status'  => HTTP_NOT_FOUND,
             ], HTTP_NOT_FOUND);
