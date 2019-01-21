@@ -156,9 +156,9 @@ $ php index.php luthier make helper HelperName
 $ php index.php luthier make middleware MiddlewareName
 
 // Creating a migration (by default, migrations are created by date)
-$ php index.php luthier make migration create_users_table
-$ php index.php luthier make migration create_users_table date
-$ php index.php luthier make migration create_users_table sequential
+$ php index.php luthier make migration create_table_users
+$ php index.php luthier make migration create_table_users date
+$ php index.php luthier make migration create_table_users sequential
 ````
 
 To run migrations:
