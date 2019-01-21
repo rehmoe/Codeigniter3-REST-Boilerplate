@@ -1,4 +1,17 @@
  # CodeIgniter REST API Boilerplate
+
+# T.O.C (Table of Contents)
+ - [Synopsis](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#requirements)
+ - [Folder Structure](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#folder-structure)
+ - [Useful Links](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#useful-links)
+ - [Requirements](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#requirements)
+ - [What's Included](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#includes)
+ - [Project Setup](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#project-setup)
+ - [Install notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#install-notes)
+ - [Other notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#other-notes)
+ - [CLI Commands](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#cli-commands)
+ 
+# Synopsis
 This is a boilerplate for REST APIs using Codeigniter 3. I built this as a 
 small scaffold for my API based projects and tried making it as 
 un-opinionated as possible. It contains a number of cool features for REST 
@@ -26,16 +39,6 @@ I hope everyone enjoys this and finds it useful. Please feel free to offer
  Codeigniter framework goes to the Codeigniter team at BCIT and credit for
   the composer dependencies goes to their respective authors. Without their
    work, this would've been a lot more difficult of an approach =)
-
-# T.O.C (Table of Contents)
- - [Folder Structure](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#folder-structure)
- - [Useful Links](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#useful-links)
- - [Requirements](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#requirements)
- - [What's Included](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#includes)
- - [Project Setup](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#project-setup)
- - [Install notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#install-notes)
- - [Other notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#other-notes)
- - [CLI Commands](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#cli-commands)
 
 ## Folder Structure
 
