@@ -1,6 +1,7 @@
  # CodeIgniter REST API Boilerplate
  
- If you'd like to see the Postman docs for the provided `Sessions` and `Home` examples, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo)
+ If you'd like to see the Postman docs for the provided `Sessions` and `Home` examples, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo).
+ To check out the official versioned releases of this repo, go [here](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases).
 
 # T.O.C (Table of Contents)
  - [Synopsis](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#synopsis)
