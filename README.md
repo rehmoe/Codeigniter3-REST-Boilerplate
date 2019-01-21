@@ -17,8 +17,8 @@
 This is a boilerplate for REST APIs using Codeigniter 3. I built this as a 
 small scaffold for my API based projects and tried making it as 
 un-opinionated as possible. It contains a number of cool features for REST 
-APIs such as a built-in JWT library, static routes files brought to us by 
-`Luthier-CI`, proper REST Controller library brought to us by Phil Sturgeon
+APIs such as a built-in JWT library, static routes and middleware brought to us by the amazing 
+`Luthier-CI` package, a proper REST Controller library brought to us by Phil Sturgeon
  and Chris Kacerguis, a small but useful `MY_Controller` and an amazing 
  `MY_Model` brought to us by Avenir. Also included is a cool assortment of
   composer dependencies and integration for libraries like `Monolog` PSR3 
@@ -99,7 +99,7 @@ ROOT/
  - Whoops Errors for Cool Kids integration
  - PHP Dotenv library integration
  - Proper environmental configuration setup
- - A very series of robust helper files from CLI to Databases
+ - A series of robust helper files from CLI to Databases
  - Migration files for ci_sessions and the REST Library
  - And more... take a look!
  
