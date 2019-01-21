@@ -142,7 +142,7 @@ Navigate to localhost:8080 to run the development server
 4. Go to `application/config/ENVIRONMENT/database.php` and enter your database credentials (Where ENVIRONMENT is the environment you want to connect a database with, EG - production)
 
 If you want database sessions, and to use the included API examples:
-1. Go to `application/config/ENVIRONMENT/database.php` and change the session type to database sessions located on `line 382` (Where ENVIRONMENT is the environment you want to configure the sessions for)
+1. Go to `application/config/ENVIRONMENT/config.php` and change the session type to database sessions located on `line 382` (Where ENVIRONMENT is the environment you want to configure the sessions for)
 2. Open your command line tool (EG - Git Bash) and run `$ cd path/to/public_html` then run the migration command `$ php index.php luthier migrate`
 3. Access your new API and Enjoy!
 
