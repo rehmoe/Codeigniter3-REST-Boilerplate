@@ -12,7 +12,7 @@
  * @updated  11.26.2018
  *
  * @license  2-clause BSD
- * @version  1.0.1 [major.minor.patch]
+ * @version  1.1.0 [major.minor.patch]
  * @since    1.0.0 [major.minor.patch]
  *
  */
@@ -22,12 +22,12 @@ define('_DS_', str_replace(DIRECTORY_SEPARATOR, '/', '\\'));
 
 // ----------------------------------------------------------------------------
 // Composer Vendor Path
-define('VENDORPATH', APPPATH   . 'vendor'    . _DS_);
+define('VENDORPATH', APPPATH       . 'vendor'    . _DS_);
 define('COMPOSER_PATH', VENDORPATH . 'autoload.php');
 
 // ----------------------------------------------------------------------------
 // Writable Directory Constants
-define('WRITEPATH', APPPATH   . 'writable'   . _DS_);
+define('WRITEPATH', APPPATH   . 'writable'  . _DS_);
 define('SESSPATH',  WRITEPATH . ENVIRONMENT . _DS_ . 'sessions' . _DS_);
 define('CACHEPATH', WRITEPATH . ENVIRONMENT . _DS_ . 'cache' . _DS_);
 define('LOGPATH',   WRITEPATH . ENVIRONMENT . _DS_ . 'logs' . _DS_);
