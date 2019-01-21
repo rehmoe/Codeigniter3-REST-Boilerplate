@@ -50,7 +50,7 @@ class MY_Controller extends REST_Controller
          * requests
          */
         if (is_cli() && ENVIRONMENT === 'development') {
-            load_helper('development/cli');
+            load_helper('cli');
         }
 
         // Check to make sure we are running on PHP >= 7.2.0
