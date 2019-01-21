@@ -23,6 +23,7 @@ define('_DS_', str_replace(DIRECTORY_SEPARATOR, '/', '\\'));
 // ----------------------------------------------------------------------------
 // Composer Vendor Path
 define('VENDORPATH', APPPATH   . 'vendor'    . _DS_);
+define('COMPOSER_PATH', VENDORPATH . 'autoload.php');
 
 // ----------------------------------------------------------------------------
 // Writable Directory Constants
