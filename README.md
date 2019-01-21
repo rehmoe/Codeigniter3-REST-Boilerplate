@@ -1,7 +1,7 @@
  # CodeIgniter REST API Boilerplate
 
 # T.O.C (Table of Contents)
- - [Synopsis](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#requirements)
+ - [Synopsis](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#synopsis)
  - [Folder Structure](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#folder-structure)
  - [Useful Links](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#useful-links)
  - [Requirements](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#requirements)
