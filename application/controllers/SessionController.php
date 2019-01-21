@@ -33,7 +33,7 @@ class SessionController extends MY_Controller
         // Build the SQL data
         $this->data = $this->model->as_array()->get_all();
 
-        // Generate the repsonse
+        // Generate the response
         $this->data
             ? $this->response((array)$this->data)
             : $this->response([
@@ -57,7 +57,7 @@ class SessionController extends MY_Controller
         // Build the SQL data
         $this->data = $this->model->where('id', $id)->as_array()->get();
 
-        // Generate the repsonse
+        // Generate the response
         $this->data
             ? $this->response($this->data)
             : $this->response([
