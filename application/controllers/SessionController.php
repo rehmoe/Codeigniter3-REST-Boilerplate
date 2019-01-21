@@ -9,6 +9,8 @@ class SessionController extends MY_Controller
     /**
      * In the constructor we load the `Sessions_model` class to use for gathering
      * our data for the API requests
+     *
+     * @throws RuntimeException
      */
     public function __construct()
     {

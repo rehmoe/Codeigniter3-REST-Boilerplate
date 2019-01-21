@@ -39,8 +39,6 @@ class MY_Controller extends REST_Controller
      * Build application controller components upon class construction
      *
      * @param  string $config Optional REST Library config file
-     *
-     * @throws Exception
      */
     public function __construct(string $config = 'rest')
     {
