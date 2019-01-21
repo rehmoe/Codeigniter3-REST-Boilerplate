@@ -22,31 +22,36 @@ small scaffold for my API based projects and tried making it as
 un-opinionated as possible. It contains a number of cool features for REST 
 APIs such as a built-in JWT library, static routes and middleware brought to us by the amazing 
 `Luthier-CI` package, a proper REST Controller library brought to us by Phil Sturgeon
- and Chris Kacerguis, a small but useful `MY_Controller` and an amazing 
- `MY_Model` brought to us by Avenir. Also included is a cool assortment of
-  composer dependencies and integration for libraries like `Monolog` PSR3 
-  Logger library, Dotenv by Vance Lucas for Environment configuration and 
-  Whoops Errors for Cool Kids for API/UI errors during development. Also 
-  included are a series of helper files, hooks and migrations to make the 
-  instantiation of REST APIs far quicker and far more simple.
+and Chris Kacerguis, a small but useful `MY_Controller` and an amazing 
+`MY_Model` brought to us by Avenir. Also included is a cool assortment of
+composer dependencies and integration for libraries like `Monolog` PSR3 
+Logger library, Dotenv by Vance Lucas for Environment configuration and 
+Whoops Errors for Cool Kids for API/UI errors during development as well as a 
+series of helper files, hooks and migrations to make the instantiation of REST 
+APIs far quicker and far more simple.
 
-I built this to eliminate the need to constantly adjust the Codeigniter 
+I built this because I primarily build APIs and I absolutely love working with the CodeIgniter framework.
+Also this was built to keep the DY KISS approach in all of my future API projects, while modernizing CodeIgniter 3
+to allow it to be used for years to come with best practices at the forefront of boilerplate's design and structure.
+This is due to me wanting to eliminate the need to constantly adjust the Codeigniter 
 folder structure and move the application directory outside of the publicly
- accessible scope and to eliminate the need to repeat tasks like the need 
- to constantly configure a composer.json file for dependencies or load 
- helper files, separate the config into an environment based structure, 
- initiate the REST Controller library, add a `MY_Model` file, etc. This 
- boilerplate is geared towards building only APIs and not initially built 
- for User Interface mechanics. After installation, run the sessions migration,
- switch to database sessions and go to `http://mysite.com/sessions` in a Postman 
- style app or via cURL, etc and test out a real time demonstration of this project.
- Alternately, you can visit the Postman docs of this very example by going to this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo)
+accessible scope and to eliminate the need to repeat tasks like the need 
+to constantly configure a composer.json file for dependencies or load 
+helper files, separate the config into an environment based structure, 
+initiate the REST Controller library, add a `MY_Model` file, monitor my dependencies, etc, etc, etc.  
+Please note, that this boilerplate is geared towards building only APIs and not initially built 
+for User Interface mechanics (although that still can be done). 
+
+After installation, run the sessions migration,
+switch to database sessions and go to `http://mysite.com/sessions` in a Postman 
+style app or via cURL, etc and test out a real time demonstration of this project.
+Alternately, you can visit the Postman docs of this very example by going to this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo)
 
 I hope everyone enjoys this and finds it useful. Please feel free to offer
- any advice or issue PRs and fixes where you see fit. All credit for the 
- Codeigniter framework goes to the Codeigniter team at BCIT and credit for
-  the composer dependencies goes to their respective authors. Without their
-   work, this would've been a lot more difficult of an approach =)
+any advice or issue PRs and fixes where you see fit. All credit for the 
+Codeigniter framework goes to the Codeigniter team at BCIT and credit for
+the composer dependencies goes to their respective authors. Without their
+work, this would've been a lot more difficult of an approach =)
 
 ## Folder Structure
 
@@ -60,8 +65,9 @@ ROOT/
 ├── application/composer.json
 |
 ├── public_html/        # FCPATH directory
+│   ├── web.config      # Prebuilt web.config file for IIS servers
 │   ├── .htaccess       # Prebuilt .htaccess
-│   ├── .env.example    # Prebuilt .env file
+│   ├── .env            # Prebuilt .env file
 │   ├── index.php       # Custom index.php file
 └── 
 ```
@@ -104,7 +110,9 @@ ROOT/
  - Proper environmental configuration setup
  - A series of robust helper files from CLI to Databases
  - Migration files for ci_sessions and the REST Library
- - And more... take a look!
+ - Example Controller, Model, Migration and Routes to demonstrate the API
+ - Example Postman documentation for the aforementioned example included in the Repo
+ - And much more... take a look!
  
 ## Project Setup
 ### Install Dependencies
