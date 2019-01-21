@@ -31,7 +31,7 @@ series of helper files, hooks and migrations to make the instantiation of REST
 APIs far quicker and far more simple.
 
 I built this because I primarily build APIs and I absolutely love working with the CodeIgniter framework.
-Also this was built to keep the DY KISS approach in all of my future API projects, while modernizing CodeIgniter 3
+Also this was built to keep the DRY KISS approach in all of my future API projects, while modernizing CodeIgniter 3
 to allow it to be used for years to come with best practices at the forefront of boilerplate's design and structure.
 This is due to me wanting to eliminate the need to constantly adjust the Codeigniter 
 folder structure and move the application directory outside of the publicly
