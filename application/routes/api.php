@@ -1,8 +1,8 @@
 <?php
 
-/**
- * AJAX Based Routing
- *
- * @link https://www.codeigniter.com/userguide3/general/routing.html
- * @link https://github.com/ingeniasoftware/luthier-ci
- */
+// ----------------------------- SESSIONS API ---------------------------------
+Route::resource('sessions', 'SessionController', [
+    'index',   // All records
+    'show',    // Single record
+    'destroy', // Delete record
+]);

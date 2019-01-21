@@ -33,6 +33,8 @@ folder structure and move the application directory outside of the publicly
  initiate the REST Controller library, add a `MY_Model` file, etc. This 
  boilerplate is geared towards building only APIs and not initially built 
  for User Interface mechanics.
+ 
+ If you'd like to see the Postman docs provided in the example, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo)
 
 I hope everyone enjoys this and finds it useful. Please feel free to offer
  any advice or issue PRs and fixes where you see fit. All credit for the 
