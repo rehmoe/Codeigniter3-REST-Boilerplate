@@ -38,9 +38,9 @@ folder structure and move the application directory outside of the publicly
 accessible scope and to eliminate the need to repeat tasks like the need 
 to constantly configure a composer.json file for dependencies or load 
 helper files, separate the config into an environment based structure, 
-initiate the REST Controller library, add a `MY_Model` file, monitor my dependencies, etc, etc, etc.  
-Please note, that this boilerplate is geared towards building only APIs and not initially built 
-for User Interface mechanics (although that still can be done). 
+initiate the REST Controller library, add a `MY_Model` file, monitor my dependencies, etc, etc, etc. Please 
+note, that this boilerplate is geared towards building only APIs and not initially built  for User Interface 
+mechanics (although that still can be done). 
 
 After installation, run the sessions migration,
 switch to database sessions and go to `http://mysite.com/sessions` in a Postman 
