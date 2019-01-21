@@ -140,8 +140,11 @@ Navigate to localhost:8080 to run the development server
  - Do NOT access the `public_html` directory directly from your browser [EG - `http:/mysite.com/public_html/`]. Always set your web server to 'point' to your `public_html` directory. This is done for security reasons.
 3. `$ cd path/to/application` and then run the `composer install` command
 4. Go to `application/config/ENVIRONMENT/database.php` and enter your database credentials (Where ENVIRONMENT is the environment you want to connect a database with, EG - production)
-5. Open your command line tool (EG - Git Bash) and run `$ cd path/to/public_html` then run the migration command `$ php index.php luthier migrate`
-6. Access your new API and Enjoy!
+
+If you want database sessions, and to use the included API examples:
+1. Go to `application/config/ENVIRONMENT/database.php` and change the session type to database sessions located on `line 382` (Where ENVIRONMENT is the environment you want to configure the sessions for)
+2. Open your command line tool (EG - Git Bash) and run `$ cd path/to/public_html` then run the migration command `$ php index.php luthier migrate`
+3. Access your new API and Enjoy!
 
 ## Other notes
 - Please read the docs of the Luthier-CI package if you've questions regarding routing and middleware. You can find the docs for that plugin [here](https://github.com/ingeniasoftware/luthier-ci)
