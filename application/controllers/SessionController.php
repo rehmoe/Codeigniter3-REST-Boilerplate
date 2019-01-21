@@ -37,10 +37,10 @@ class SessionController extends MY_Controller
         $this->data
             ? $this->response((array)$this->data)
             : $this->response([
-            'message' => 'Record Not Found',
-            'success' => false,
-            'status'  => HTTP_NOT_FOUND,
-        ], HTTP_NOT_FOUND);
+                'message' => 'Record Not Found',
+                'success' => false,
+                'status'  => HTTP_NOT_FOUND,
+            ], HTTP_NOT_FOUND);
     }
 
     // ------------------------------------------------------------------------
@@ -61,10 +61,10 @@ class SessionController extends MY_Controller
         $this->data
             ? $this->response($this->data)
             : $this->response([
-            'message' => 'Record Not Found',
-            'success' => false,
-            'status'  => HTTP_NOT_FOUND,
-        ], HTTP_NOT_FOUND);
+                'message' => 'Record Not Found',
+                'success' => false,
+                'status'  => HTTP_NOT_FOUND,
+            ], HTTP_NOT_FOUND);
     }
 
     // ------------------------------------------------------------------------
