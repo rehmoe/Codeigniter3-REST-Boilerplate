@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Library for a JSON Web Token implementation based on the JWT Spec
+ * A slightly upgraded version of luciferous's library for a JSON Web
+ * Token implementation based on the JWT Spec
  *
  * @category Libraries
  * @author   luciferous <https://github.com/luciferous>
  * @author   Jason Napolitano <jnapolitanoit@gmail.com>
- * @updated  01.18.2018
+ * @updated  01.22.2019
  *
  * @license  MIT
  *
@@ -30,7 +31,7 @@ class JWT
      * @throws \DomainException
      * @throws \UnexpectedValueException
      */
-    public function decode(string $jwt, ?string $key = null, bool $verify = true)
+    public function decode(string $jwt, ?string $key = null, bool $verify = true): object
     {
         $tks = explode('.', $jwt);
         if (count($tks) !== 3) {
@@ -120,10 +121,11 @@ class JWT
      *
      * @throws \DomainException
      */
-    public function jsonDecode(string $input)
+    public function jsonDecode(string $input): object
     {
         $obj = \json_decode($input);
-        if (function_exists('json_last_error') && $errno = json_last_error()) {
+        if (function_exists('json_last_error') && $errno = json_last_error())
+        {
             $this->handleJsonError($errno);
 
         } elseif ($obj === null && $input !== 'null') {
