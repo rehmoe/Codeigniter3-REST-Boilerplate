@@ -2,7 +2,7 @@
 
 /**
  * A slightly upgraded version of luciferous's library for a JSON Web
- * Token implementation based on the JWT Spec
+ * Token implementation based on the JWT Spec. Requires PHP >= 7.2.0
  *
  * @category Libraries
  * @author   luciferous <https://github.com/luciferous>
@@ -16,6 +16,9 @@
  *
  * Read about the JWT Specification Here
  * @link     https://tools.ietf.org/html/rfc7519
+ *
+ * Read about object type-hints Here
+ * @link     https://wiki.php.net/rfc/object-typehint
  */
 class JWT
 {
@@ -124,8 +127,7 @@ class JWT
     public function jsonDecode(string $input): object
     {
         $obj = \json_decode($input);
-        if (function_exists('json_last_error') && $errno = json_last_error())
-        {
+        if (function_exists('json_last_error') && $errno = json_last_error()) {
             $this->handleJsonError($errno);
 
         } elseif ($obj === null && $input !== 'null') {
@@ -170,7 +172,7 @@ class JWT
      */
     public function urlsafeB64Decode(string $input): string
     {
-        $remainder  = strlen($input) % 4;
+        $remainder = strlen($input) % 4;
         if ($remainder) {
             $padlen = 4 - $remainder;
             $input .= str_repeat('=', $padlen);
