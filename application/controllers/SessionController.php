@@ -17,7 +17,7 @@ class SessionController extends MY_Controller
         // MY_Controller Class constructor
         parent::__construct();
 
-        // Load the Users_model class
+        // Load the Sessions_model class
         load_model('Sessions_model');
         // Assign Sessions_model to $this->model
         $this->model = new Sessions_model();
@@ -86,7 +86,7 @@ class SessionController extends MY_Controller
         // IF the database record is not found
         if (!$this->data) {
             $this->response([
-                'message' => 'Not Found',
+                'message' => 'Record Not Found',
                 'success' => false,
                 'status'  => HTTP_NOT_FOUND,
             ], HTTP_NOT_FOUND);
