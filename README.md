@@ -15,6 +15,7 @@
  - [Install notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#install-notes)
  - [Other notes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#other-notes)
  - [CLI Commands](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#cli-commands)
+ - [TODO's](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#todos)
  
 # Synopsis
 This is a boilerplate for REST APIs using Codeigniter 3. I built this as a 
@@ -204,3 +205,18 @@ Examples
 $ php index.php luthier migrate reverse
 $ php index.php luthier migrate refresh
 ````
+
+# TODO's
+A small list of things I would like to do by the version 1.1.0 release:
+
+ - ~~A small example using Codeigniter sessions.~~ (Released in v1.0.0)
+   - ~~Migration file~~
+   - ~~A controller~~
+   - ~~A model~~
+   - ~~Routes~~
+   - ~~Docs~~
+ - An example representation of authentication
+   - Using basic auth
+   - Using digest auth 
+   - Using JWT for Auth
+   - Using OAuth2 (maybe)
