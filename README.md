@@ -216,7 +216,8 @@ A small list of things I would like to do by the version 1.1.0 release:
    - ~~Routes~~
    - ~~Docs~~
  - An example representation of authentication
-   - Using basic auth
-   - Using digest auth 
-   - Using JWT for Auth
-   - Using OAuth2 (maybe)
+   - Using an AuthMiddleware
+     - Using basic auth
+     - Using digest auth 
+     - Using JWT for Auth
+     - Using OAuth2 (maybe)
