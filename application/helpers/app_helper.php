@@ -2166,3 +2166,29 @@ if (!function_exists('parse_link_header')) {
     }
 }
 // ----------------------------------------------------------------------------
+// When/If the function does not exist, let's create it!
+if ( ! function_exists('translate_slug'))
+{
+    /*
+     * Translate a slugified string
+     *
+     * @param  string $string The String to slugify
+     *
+     * @return string
+     */
+    function translate_slug(string $string): string
+    {
+    	// Load the helpers
+        load_helper('text');
+        load_helper('url');
+
+        // Replace unsupported characters
+        $string = str_replace("'", '-', $string);
+        $string = str_replace(".", '-', $string);
+        $string = str_replace("²", '2', $string);
+
+        // Slugify and return the string
+        return url_title(convert_accented_characters($string), 'dash', true);
+    }
+}
+// ----------------------------------------------------------------------------
