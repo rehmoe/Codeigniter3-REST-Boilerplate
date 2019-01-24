@@ -154,7 +154,7 @@ If you want database sessions, and to use the included API examples:
   - Check the [CodeIgniter User Guide](http://www.codeigniter.com/user_guide/installation/upgrading.html) for more information.
 
 ## CLI Commands
-To execute the following commands: `$ cd path/to/public_html` directory and run:
+To execute the CLI commands simply run `$ cd path/to/public_html`. Then use one of the following commands:
 
 ````
 // Creating a controller:
