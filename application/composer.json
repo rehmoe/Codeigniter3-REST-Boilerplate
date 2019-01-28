@@ -12,7 +12,7 @@
     "luthier/luthier": "^1.0",
     "monolog/monolog": "^1.23",
     "nesbot/carbon": "2.10.*",
-    "vlucas/phpdotenv": "3.1.*"
+    "vlucas/phpdotenv": "3.3.*"
   },
   "require-dev": {
     "crazycodr/standard-exceptions": "2.3.*",
