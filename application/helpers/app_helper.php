@@ -23,7 +23,7 @@ use Exceptions\IO\Filesystem\{
  *
  * @package  Helpers
  * @author   Jason Napolitano <jnapolitanoit@gmail.com>
- * @updated  01.15.2019
+ * @updated  01.28.2019
  *
  * @license  MIT License
  *
