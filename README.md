@@ -204,11 +204,11 @@ Examples
 ````
 $ php index.php luthier migrate reverse
 $ php index.php luthier migrate refresh
+````
 
 ### Running the SQL File:
 Alternately, you may simply import the SQL file located at `APPPPATH/database/sql/rest_api.sql` into 
 your favorite RDBMS to get the desired tables.
-````
 
 # TODO's
 A small list of things I would like to do by the version 1.1.0 release:
