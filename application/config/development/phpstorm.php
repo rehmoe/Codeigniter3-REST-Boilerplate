@@ -56,11 +56,11 @@ die('This file is used for development purposes only.');
  * @property CI_Unit_test        $unit                                Simple testing class
  * @property CI_Upload           $upload                              File Uploading Class
  * @property CI_URI              $uri                                 Parses URIs and determines routing
- * @property CI_User_agent       $agent                               Identifies the platform, browser, robot, or mobile device of the browsing agent
- * @property CI_Xmlrpc           $xmlrpc                              XML-RPC request handler class
- * @property CI_Xmlrpcs          $xmlrpcs                             XML-RPC server class
- * @property CI_Zip              $zip                                 Zip Compression Class
- * @property CI_Utf8             $utf8                                Provides support for UTF-8 environments
+ * @property CI_User_agent $agent                               Identifies the platform, browser, robot, or mobile device of the browsing agent
+ * @property CI_Xmlrpc     $xmlrpc                              XML-RPC request handler class
+ * @property CI_Xmlrpcs    $xmlrpcs                             XML-RPC server class
+ * @property CI_Zip        $zip                                 Zip Compression Class
+ * @property CI_Utf8       $utf8                                Provides support for UTF-8 environments
  */
 class CI_Controller {
     public function __construct()
