@@ -1,5 +1,5 @@
  # CodeIgniter REST API Boilerplate
- ## [Version 1.0.0](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases/tag/1.0.0)
+ ## [Version 1.1.0](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases/tag/1.1.0)
  
  This is an MVC boilerplate for REST APIs powered by PHP, JWT, Composer and Codeigniter 3. If you'd like to see the Postman docs for the provided 
  `Sessions` and `Home` examples, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo). To check out the official 
