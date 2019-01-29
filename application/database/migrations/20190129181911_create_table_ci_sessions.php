@@ -5,16 +5,18 @@
  */
 class Migration_create_table_ci_sessions extends CI_Migration
 {
-    /**
-     * Entry point for the migration
-     */
+    private $table = 'ci_sessions';
+
     public function up()
     {
-        // Fields array
-        $fields = [
+        // Drop table 'ci_sessions' if it exists
+        $this->dbforge->drop_table($this->table, true);
+
+        // Table structure for table 'groups'
+        $this->dbforge->add_field([
             'id'         => [
                 'type'       => 'VARCHAR',
-                'constraint' => '128',
+                'constraint' => '40',
                 'null'       => false,
             ],
             'ip_address' => [
@@ -30,24 +32,18 @@ class Migration_create_table_ci_sessions extends CI_Migration
                 'null'       => false,
             ],
             'data'       => [
-                'type' => 'BLOB',
+                'type' => 'blob',
                 'null' => false,
             ],
-        ];
-        $this->dbforge->add_field($fields);
-        $this->dbforge->add_key('`' . config_item('sess_save_path') . '_timestamp` (`timestamp`)', false);
-
-        // Create the table
-        $this->dbforge->create_table(config_item('sess_save_path'));
+        ]);
+        $this->dbforge->create_table($this->table);
+        $this->db->query('CREATE INDEX `' . $this->table . '_timestamp` ON `ci_sessions` (`timestamp`)');
+        $this->db->query('ALTER TABLE `' . $this->table . '` ADD PRIMARY KEY (`id`, `ip_address`)');
     }
 
-    /**
-     * Migration rollback
-     */
     public function down()
     {
-
-        $this->dbforge->drop_table(config_item('sess_save_path'));
-
+        $this->dbforge->drop_table($this->table);
     }
+
 }

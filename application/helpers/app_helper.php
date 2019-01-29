@@ -23,7 +23,7 @@ use Exceptions\IO\Filesystem\{
  *
  * @package  Helpers
  * @author   Jason Napolitano <jnapolitanoit@gmail.com>
- * @updated  01.28.2019
+ * @updated  01.15.2019
  *
  * @license  MIT License
  *
@@ -226,171 +226,9 @@ if (!function_exists('is_countable')) {
     }
 }
 /** ---------------------------------------------------------------------------
- * SOME BASIC HELPER FUNCTIONS FOR LOADING ASSETS AND RESOURCES
- * ------------------------------------------------------------------------- */
-// When/If the function does not exist, let's create it!
-if (!function_exists('assets_url')) {
-    /**
-     * Load the resources/assets URI via the resource_dir config item.
-     * Default: FCPATH/assets/
-     *
-     * USAGE:
-     *  -> Default Assets Directory:   assets_url('css/stylesheet.css');
-     *       -> Implies this file lives at FCPATH/assets/css/stylesheet.css
-     *  -> Different Assets Directory: assets_url('css/stylesheet.css', 'static');
-     *       -> Implies this file lives at FCPATH/static/css/stylesheet.css
-     *
-     * @param  string $file The subdirectory from where to load your assets
-     * @param  string $path Change if different from FCPATH/assets/
-     *
-     * @return string
-     *
-     */
-    function assets_url(string $file = '', string $path = 'assets'): string
-    {
-        // Return the Config Value
-        return base_url($path . _DS_ . $file);
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('load_css')) {
-    /**
-     * Method to load css files into your project relative to the resources URI
-     *
-     * @param  string|array $stylesheets The stylesheet file(s) to load
-     * @param  string       $alt_path
-     * @param  string       $alt_ext
-     *
-     * @return string
-     */
-    function load_css($stylesheets, string $alt_path = 'css/', string $alt_ext = '.css'): string
-    {
-        // If we are !not passing an array of stylesheets
-        if (!is_array($stylesheets)) {
-            // Cast the $stylesheets variable to an array
-            $stylesheets = (array)$stylesheets;
-        }
-        // Initially setup $return as an empty string
-        $return = '';
-        // Foreach $stylesheets passed
-        foreach ($stylesheets as $stylesheet) {
-            // Assign the return
-            $return .= '<link rel="stylesheet" href="' .
-                assets_url($alt_path . _DS_ . $stylesheet . $alt_ext) . '"/>' . "\n";
-        }
-
-        // Return the $return value
-        return $return;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('load_js')) {
-    /**
-     * Method to load javascript files into your project relative to the resources URI
-     *
-     * @param  string|array $javascripts The javascript file(s) to load
-     * @param  string       $alt_path
-     * @param  string       $alt_ext
-     *
-     * @see    \assets_url()
-     *
-     * @return string
-     *
-     */
-    function load_js($javascripts, string $alt_path = 'js/', string $alt_ext = '.js'): string
-    {
-        // If we are !not passing an array of javascripts
-        if (!is_array($javascripts)) {
-            // Cast the $javascripts variable to an array
-            $javascripts = (array)$javascripts;
-        }
-        // Initially setup $return as an empty string
-        $return = '';
-        // Foreach $javascripts passed
-        foreach ($javascripts as $javascript) {
-            // Assign the return
-            $return .= '<script type="text/javascript" src="' .
-                assets_url($alt_path . $javascript . $alt_ext) . '"></script>' . "\n";
-        }
-
-        // Return the $return value
-        return $return;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('active_link')) {
-    /**
-     * This function will detect if the current controller matches your URI
-     * and assign an 'active' class if placed in a link, nav item, or other
-     * areas that require style changes based off of an 'active' status
-     *
-     * @param  string $controller The controller to test against
-     * @param  string $method     The method to test against
-     *
-     * @return string
-     */
-    function active_link(string $controller, string $method = 'index'): string
-    {
-        // Getting Router Class for Activation of Class and Method (Optional)
-        $class = ci()->router->class;
-        $function = ci()->router->method;
-
-        // Return the active status if the class/method equals the controller/method names
-        return ($class === $controller && $function === $method) ? 'active': '';
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('is_selected')) {
-    /**
-     * Assign a `selected` attribute to an HTML tag
-     *
-     * @param $data1
-     * @param $data2
-     */
-    function is_selected($data1, $data2)
-    {
-        if ($data1 === $data2) {
-            echo 'selected="selected"';
-        } else {
-            echo '';
-        }
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('is_checked')) {
-    /**
-     * Assign a `checked` attribute to an HTML tag
-     *
-     * @param        $data1
-     * @param        $data2
-     * @param string $multi
-     */
-    function is_checked($data1, $data2, $multi = '')
-    {
-        if (!empty($multi)) {
-            if (in_array($data1, $data2, true)) {
-                echo 'checked="checked"';
-            } else {
-                echo '';
-            }
-        } else {
-            if ($data1 === $data2) {
-                echo 'checked="checked"';
-            } else {
-                echo '';
-            }
-        }
-    }
-}
-/** ---------------------------------------------------------------------------
  * SOME BASIC HELPER FUNCTIONS FOR LOADING AND SETTING ENVIRONMENTAL VARIABLES
  * ------------------------------------------------------------------------- */
-if (!function_exists('env')) {
+if (!function_exists('get_env')) {
     /**
      * Syntactic sugar for the getenv(...) function and the $_ENV[...] array
      *
@@ -403,11 +241,11 @@ if (!function_exists('env')) {
      *
      * @throws FileNotFoundException
      */
-    function env(string $varname = null, string $env_path = FCPATH, string $file = '.env', bool $local_only = false)
+    function get_env(string $varname = null, string $env_path = FCPATH, string $file = '.env', bool $local_only = false)
     {
         if (file_exists($env_path . $file)) {
             // Get the env configuration setting
-            env($varname, $local_only);
+            get_env($varname, $local_only);
         } else {
             $error_message = 'ERROR ' . HTTP_NOT_FOUND . ': The .env file could not be located.';
             log_message('ERROR', $error_message);
@@ -482,15 +320,9 @@ if (!function_exists('show_and_log_error')) {
      * @param  int    $status_code The HTTP Status Code for show_error() [default: 500]
      * @param  string $log_level   The error level: 'ERROR', 'DEBUG' or 'INFO'
      * @param  string $heading     The heading of the show_error() function
-     *
-     * @throws RuntimeException
      */
-    function show_and_log_error(
-        string $message,
-        int $status_code = HTTP_INTERNAL_SERVER_ERROR,
-        string $log_level = 'INFO',
-        string $heading = 'An Error Was Encountered'
-    ) {
+    function show_and_log_error(string $message, int $status_code = HTTP_INTERNAL_SERVER_ERROR, string $log_level = 'INFO', string $heading = 'An Error Was Encountered')
+    {
         show_error($message, $status_code, $heading);
         config_item('log_path') !== null ? log_message($log_level, $message): false;
     }
@@ -505,11 +337,8 @@ if (!function_exists('log_and_exit')) {
      * @param int    $status_code The HTTP Status Code for the exit() function
      * @param string $log_level   Error level: ERROR|DEBUG|INFO [Default: INFO]
      */
-    function log_and_exit(
-        string $message = 'Access Denied',
-        int $status_code = HTTP_FORBIDDEN,
-        string $log_level = 'INFO'
-    ) {
+    function log_and_exit(string $message = 'Access Denied', int $status_code = HTTP_FORBIDDEN, string $log_level = 'INFO')
+    {
         // Exit with the custom message and status code
         log_message($log_level, $message);
         json_encode([
@@ -530,12 +359,8 @@ if (!function_exists('log_and_throw')) {
      * @param int    $status_code The HTTP Status Code for the exit() function
      * @param string $log_level   Error level: ERROR|DEBUG|INFO [Default: INFO]
      */
-    function log_and_throw(
-        string $message,
-        string $exception = \Exception::class,
-        int $status_code = HTTP_FORBIDDEN,
-        string $log_level = 'INFO'
-    ) {
+    function log_and_throw(string $message, string $exception = \Exception::class, int $status_code = HTTP_FORBIDDEN, string $log_level = 'INFO')
+    {
         // Exit with the custom message and status code
         log_message($log_level, $message);
         throw new $exception($message ? : $exception . ' Thrown with code ' . $status_code);
@@ -557,13 +382,11 @@ if (!function_exists('show_json_error')) {
         header('Cache-Control: no-cache, must-revalidate');
         header('Content-type: application/json');
         set_status_header($status_code, $status_message);
-        echo json_encode(
-            [
-                'status'  => false,
-                'error'   => 'Server Error',
-                'message' => $message,
-            ]
-        );
+        echo json_encode([
+            'status'  => false,
+            'error'   => 'Server Error',
+            'message' => $message,
+        ]);
         exit;
     }
 }
@@ -600,39 +423,6 @@ if (!function_exists('is_controller')) {
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('string_to_int')) {
-    /**
-     * Convert a string to an integer in a simple way
-     *
-     * @param  string $string
-     *
-     * @return int
-     */
-    function string_to_int(string $string): int
-    {
-        // Return the integer value of the string
-        return (int)$string;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('string_to_float')) {
-    /**
-     * Convert a string to a float in a simple way. More verbose functionality is
-     * below in the form of the convert_to_float(...) function
-     *
-     * @param  string $string
-     *
-     * @return float
-     */
-    function string_to_float(string $string): float
-    {
-        // Return the float value of the string
-        return (float)$string;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
 if (!function_exists('convert_to_float')) {
     /**
      * This function takes the last comma or dot (if any) to make a clean float,
@@ -661,21 +451,6 @@ if (!function_exists('convert_to_float')) {
         return (float)
             preg_replace('/[\D]/', '', substr($integer, 0, $sep)) . '.' .
             preg_replace('/[\D]/', '', substr($integer, $sep + 1, strlen($integer)));
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('convert_to_int')) {
-    /**
-     * Convert to an integer in a simple way.
-     *
-     * @param $val
-     *
-     * @return int
-     */
-    function convert_to_int($val): int
-    {
-        return (int)$val;
     }
 }
 // ----------------------------------------------------------------------------
@@ -817,28 +592,22 @@ if (!function_exists('number_format_short')) {
             // 0 - 900
             $n_format = number_format($n, $precision);
             $suffix = '';
+        } elseif ($n < 900000) {
+            // 0.9k-850k
+            $n_format = number_format($n / 1000, $precision);
+            $suffix = 'K';
+        } elseif ($n < 900000000) {
+            // 0.9m-850m
+            $n_format = number_format($n / 1000000, $precision);
+            $suffix = 'M';
+        } elseif ($n < 900000000000) {
+            // 0.9b-850b
+            $n_format = number_format($n / 1000000000, $precision);
+            $suffix = 'B';
         } else {
-            if ($n < 900000) {
-                // 0.9k-850k
-                $n_format = number_format($n / 1000, $precision);
-                $suffix = 'K';
-            } else {
-                if ($n < 900000000) {
-                    // 0.9m-850m
-                    $n_format = number_format($n / 1000000, $precision);
-                    $suffix = 'M';
-                } else {
-                    if ($n < 900000000000) {
-                        // 0.9b-850b
-                        $n_format = number_format($n / 1000000000, $precision);
-                        $suffix = 'B';
-                    } else {
-                        // 0.9t+
-                        $n_format = number_format($n / 1000000000000, $precision);
-                        $suffix = 'T';
-                    }
-                }
-            }
+            // 0.9t+
+            $n_format = number_format($n / 1000000000000, $precision);
+            $suffix = 'T';
         }
         if ($precision > 0) {
             $dotzero = '.' . str_repeat('0', $precision);
@@ -846,27 +615,6 @@ if (!function_exists('number_format_short')) {
         }
 
         return $n_format . $suffix;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('readCSV')) {
-    /**
-     * Read from a CSV file
-     *
-     * @param $csvFile
-     *
-     * @return array
-     */
-    function readCSV(string $csvFile): array
-    {
-        $file_handle = fopen($csvFile, 'rb');
-        while (!feof($file_handle)) {
-            $line_of_text[] = fgetcsv($file_handle, 1024);
-        }
-        fclose($file_handle);
-
-        return $line_of_text;
     }
 }
 // ----------------------------------------------------------------------------
@@ -892,7 +640,6 @@ if (!function_exists('list_files')) {
         }
     }
 }
-
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
 if (!function_exists('delete_dir')) {
@@ -919,181 +666,11 @@ if (!function_exists('delete_dir')) {
             if (file_exists($path)) {
                 return unlink($path);
             } else {
-                throw new FileNotFoundException("The file: {$file} cannot be found.");
+                throw new FileNotFoundException("The file: {$path} cannot be found.");
             }
         }
 
         return false;
-    }
-}
-
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('set_thumbnail')) {
-    /**
-     * Generate a thumbnail image
-     *
-     * @param  mixed $src
-     * @param  int   $width
-     * @param  int   $height
-     *
-     * @see    \get_thumbnail()
-     *
-     * @throws RuntimeException
-     */
-    function set_thumbnail($src, int $width = 60, int $height = 60)
-    {
-        // Get src file's dirname, filename and extension
-        $path = pathinfo($src);
-
-        // Path to image thumbnail
-        $saveDirec = 'thumbnails' . _DS_ . $width . 'x' . $height . _DS_;
-        $new_thumb = $saveDirec . $path['filename'] . "." . $path['extension'];
-
-        // Check if already file exists
-        if (!file_exists($new_thumb)) {
-            // if Directory not exsits then create it.
-            if (!is_dir($saveDirec)) {
-                if (!mkdir($saveDirec, 0777, true) && !is_dir($saveDirec)) {
-                    throw new \RuntimeException(sprintf('Directory "%s" was not created', $saveDirec));
-                }
-            }
-
-            // Load the image library which will be used by the codeigniter for image processing
-            $config['image_library'] = 'gd2';
-
-            // Setting up the source of image
-            $config['source_image'] = $src;
-
-            // Get the all attributes of original image
-            [$original_width, $original_height, $file_type, $attr] = getimagesize($config['source_image']);
-
-            // This path for the new image otherwise overwrite the original image.
-            $config['new_image'] = $saveDirec;
-
-            // Division of original image width by required width
-            $widthRatio = ($original_width / $width);
-
-            // Division of original image height by required height
-            $heightRatio = ($original_height / $height);
-
-            // Then compare which one is lesser
-            if ($widthRatio < $heightRatio) {
-                $multiplyRatio = $widthRatio;
-
-            } else {
-                $multiplyRatio = $heightRatio;
-            }
-            // Multiply the lesser value with the required both width and height
-            $widthFinal = $width * $multiplyRatio;
-            $heightFinal = $height * $multiplyRatio;
-            $config['width'] = floor($widthFinal);
-            $config['height'] = floor($heightFinal);
-            $config['maintain_ratio'] = false;
-
-            // set our cropping limits according to the center of image.
-            $x_axis = ($original_width / 2) - ($widthFinal / 2);
-            $y_axis = ($original_height / 2) - ($heightFinal / 2);
-
-            // $x_axis = ($original_width - $width) / 2;
-            // $y_axis = ($original_height - $height) / 2;
-            $config['x_axis'] = $x_axis;
-            $config['y_axis'] = $y_axis;
-            ci()->load->library('image_lib');
-            ci()->image_lib->initialize($config);
-            if (!ci()->image_lib->crop()) {
-                echo ci()->image_lib->display_errors();
-                die();
-
-            }
-            ci()->image_lib->clear();
-
-            // again get the image for the next process of resizing
-            $config['source_image'] = $new_thumb;
-            $config['new_image'] = $saveDirec;
-            $config['width'] = $width;
-            $config['height'] = $height;
-            $config['maintain_ratio'] = true;
-
-            // $config['y_axis'] = 50;
-            ci()->load->library('image_lib');
-            ci()->image_lib->initialize($config);
-
-            if (!ci()->image_lib->resize()) {
-                echo ci()->image_lib->display_errors();
-                die();
-
-            }
-
-            ci()->image_lib->clear();
-        }
-    }
-}
-
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('get_thumbnail')) {
-
-    /**
-     * Return a generated thumbnail
-     *
-     * @param mixed $src
-     * @param int   $width
-     * @param int   $height
-     *
-     * @return string
-     *
-     * @see   \set_thumbnail()
-     */
-    function get_thumbnail($src, int $width = 60, int $height = 60): string
-    {
-        $dir = 'thumbnails' . _DS_ . $width . 'x' . $height . _DS_;
-
-        return assets_url($dir . $src);
-    }
-}
-
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('qr_code')) {
-    /**
-     * Generate a QR Code
-     *
-     * @param         $data
-     * @param  string $type
-     * @param  string $size
-     * @param  string $ec
-     * @param  string $margin
-     *
-     * @return mixed
-     */
-    function qr_code($data, string $type = 'TXT', string $size = '150', string $ec = 'L', string $margin = '0')
-    {
-        $types = [
-            'URL'   => 'http://',
-            'TEL'   => 'TEL:',
-            'TXT'   => '',
-            'EMAIL' => 'MAILTO:',
-        ];
-        if (!in_array($type, ['URL', 'TEL', 'TXT', 'EMAIL'], true)) {
-            $type = 'TXT';
-        }
-        if (!preg_match('/^' . $types[$type] . '/', $data)) {
-            $data = str_replace("\\", '', $types[$type]) . $data;
-        }
-        $ch = curl_init();
-        $data = urlencode($data);
-        curl_setopt($ch, CURLOPT_URL, 'http://chart.apis.google.com/chart');
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,
-            'chs=' . $size . 'x' . $size . '&cht=qr&chld=' . $ec . '|' . $margin . '&chl=' . $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        return $response;
     }
 }
 // ----------------------------------------------------------------------------
@@ -1149,17 +726,21 @@ if (!function_exists('contains_substr')) {
         return (strcmp(substr($mainStr, $loc, strlen($str)), $str) === 0);
     }
 }
+
+// ----------------------------------------------------------------------------
+// ARRAY HELPER FUNCTIONS
+
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('trim_array')) {
+if (!function_exists('array_trim')) {
     /**
-     * Recursively trim an array
+     * Recursively trim an array's keys and/or values
      *
      * @param  array|string $input
      *
      * @return array|string
      */
-    function trim_array($input)
+    function array_trim($input)
     {
         if (!is_array($input)) {
             return trim($input);
@@ -1170,34 +751,7 @@ if (!function_exists('trim_array')) {
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('recursive_mda')) {
-    /**
-     * Loop through multi-dimensional arrays with ease
-     *
-     * @param  array $array array The multi-dimensional array
-     * @param  int   $level The nest level of the array
-     *
-     * @return null
-     */
-    function recursive_mda(array $array, int $level = 1)
-    {
-        foreach ($array as $key => $value) {
-            // If $value is an array.
-            if (is_array($value)) {
-                // We need to loop through it.
-                recursive_mda($value, $level + 1);
-            } else {
-                // It is not an array, so print it out.
-                echo str_repeat('-', $level), $value, '<br>';
-            }
-        }
-
-        return null;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('strpos_array')) {
+if (!function_exists('array_strpos')) {
     /**
      * Find strings position in an array
      *
@@ -1206,12 +760,12 @@ if (!function_exists('strpos_array')) {
      *
      * @return bool|int
      */
-    function strpos_array(string $haystack, array $needles)
+    function array_strpos(string $haystack, array $needles)
     {
         if (is_array($needles)) {
             foreach ($needles as $str) {
                 if (is_array($str)) {
-                    $pos = strpos_array($haystack, $str);
+                    $pos = array_strpos($haystack, $str);
                 } else {
                     $pos = strpos($haystack, $str);
                 }
@@ -1222,9 +776,8 @@ if (!function_exists('strpos_array')) {
         } else {
             return strpos($haystack, $needles);
         }
-        $needles = false;
 
-        return $needles;
+        return false;
     }
 }
 // ----------------------------------------------------------------------------
@@ -1265,9 +818,9 @@ if (!function_exists('array_print')) {
     {
         $output = print_r($data, true);
         $output = htmlentities($output);
-        $output = str_replace(" ", "&nbsp;", $output);
+        $output = str_replace(' ', '&nbsp;', $output);
         $output = nl2br($output);
-        $output = "<div style='background-color:#FFFFFF;'>" . $output . "</div>";
+        $output = "<div style='background-color:#FFFFFF;'>" . $output . '</div>';
 
         if (!$return) {
             echo $output;
@@ -1332,7 +885,7 @@ if (!function_exists('array_filter_keys')) {
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('any')) {
+if (!function_exists('array_any')) {
     /**
      * Returns true if any element in the return returns true from the callback.
      * If the callback is not set, will just test the truthiness of each element
@@ -1342,7 +895,7 @@ if (!function_exists('any')) {
      *
      * @return bool
      */
-    function any(array $arr, callable $callback): bool
+    function array_any(array $arr, callable $callback): bool
     {
         foreach ($arr as $key => $value) {
             if (is_callable($callback)) {
@@ -1359,7 +912,7 @@ if (!function_exists('any')) {
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('all')) {
+if (!function_exists('array_all')) {
     /**
      *
      * Returns true if all elements in the return returns true from the callback.
@@ -1370,7 +923,7 @@ if (!function_exists('all')) {
      *
      * @return bool
      */
-    function all(array $arr, callable $callback): bool
+    function array_all(array $arr, callable $callback): bool
     {
         foreach ($arr as $key => $value) {
             if (is_callable($callback)) {
@@ -1387,421 +940,29 @@ if (!function_exists('all')) {
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('is_ie')) {
+if (!function_exists('recursive_array')) {
     /**
-     * A simple function to check whether or not we are running on Internet Explorer
+     * Loop through multi-dimensional arrays with ease
      *
-     * @return bool
+     * @param  array $array array The multi-dimensional array
+     * @param  int   $level The nest level of the array
+     *
+     * @return null
      */
-    function is_ie(): bool
+    function recursive_array(array $array, int $level = 1)
     {
-        return preg_match(
-                '~MSIE|Internet Explorer~i',
-                $_SERVER['HTTP_USER_AGENT']) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false);
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('on_iis')) {
-    /**
-     * Check if on a Windows IIS Server, return TRUE if yes.
-     *
-     * @return bool
-     */
-    function on_iis(): bool
-    {
-        $software = strtolower($_SERVER['SERVER_SOFTWARE']);
-
-        return strpos($software, 'microsoft-iis') !== false;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('curl_download')) {
-    /**
-     * cURL download function
-     *
-     * @param  $file_url
-     * @param  $save_path
-     *
-     * @throws \Exceptions\IO\Filesystem\FileNotReadableException
-     * @throws \DomainException
-     */
-    function curl_download(string $file_url, string $save_path)
-    {
-        // Open file handler.
-        $fp = fopen($save_path, 'w+b');
-        // If $fp is FALSE, something went wrong.
-        if ($fp === false) {
-            throw new FileNotReadableException('Could not open: ' . $save_path);
-        }
-        // Create a cURL handle.
-        $ch = curl_init($file_url);
-        // Pass our file handle to cURL.
-        curl_setopt($ch, CURLOPT_FILE, $fp);
-        // Timeout if the file doesn't download after 20 seconds.
-        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-        // Execute the request.
-        curl_exec($ch);
-        // If there was an error, throw an Exception
-        if (curl_errno($ch)) {
-            throw new DomainException(curl_error($ch));
-        }
-        // Get the HTTP status code.
-        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // Close the cURL handler.
-        curl_close($ch);
-        // If we have the go ahead and an HTTP Status OK [HTTP-200-OK]
-        if ($statusCode === 200) {
-            echo 'Downloaded ' . $save_path;
-        } else {
-            log_and_exit('Status Code: ' . $statusCode, (int)$statusCode);
-        }
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('get_request_type')) {
-    /**
-     * Get Request Type
-     *
-     * Gets the type of server request: GET, POST, PUT, DELETE
-     *
-     * @return string
-     */
-    function get_request_type(): string
-    {
-        // Gets the current request method
-        $method = ci()->input->server('REQUEST_METHOD');
-
-        // Return the $method in lower case
-        return strtolower($method);
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('allowed_request_types')) {
-    /**
-     * Allowed Request Types
-     *
-     * Simple security check. Allows only the permitted request types through.
-     * All HTTP request types should be lowercase
-     *
-     * @param  array $requests_arr (lowercase)
-     * @param  int   $status_code  The HTTP Status code to return
-     *
-     * @return string
-     */
-    function allowed_request_types(array $requests_arr, int $status_code = 403): string
-    {
-        // Get request type
-        $request = get_request_type();
-        // Convert request types to lowercase
-        foreach ($requests_arr as $k => $req) {
-            $requests_arr[$k] = strtolower($req);
-        }
-        if (!in_array($request, $requests_arr, true)) {
-            // Request is denied, send rejection message
-            $return = [
-                'status'  => 0,
-                'message' => 'The request type is not allowed',
-            ];
-            return_json($return, $status_code);
-            exit;
-        }
-
-        return $request;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('return_json')) {
-    /**
-     * Returns the object in JSON form to be consumed by an endpoint
-     *
-     * @param mixed $json_data    The JSON data to pass into json_encode()
-     * @param bool  $pretty_print Enable JSON_PRETTY_PRINT [Default: True]
-     * @param int   $status       The HTTP Status Code [Default: 200 - OK]
-     */
-    function return_json($json_data = null, bool $pretty_print = true, int $status = 200)
-    {
-        // Assign the JSON to an empty array if $json_data is null
-        if (null === $json_data) {
-            $json_data = [];
-        }
-        // Use Codeigniter's Output class to set some basic header data
-        ci()->output
-            ->set_status_header($status)
-            ->set_content_type('application/json');
-        // Output the JSON data and exit the script's execution cycle
-        echo json_encode($json_data, $pretty_print === true ? JSON_PRETTY_PRINT: null);
-        exit;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('get_vars')) {
-    /**
-     * Get $_POST Variable data
-     *
-     * Gets the post variables transmitted via JSON
-     *
-     * @return mixed
-     */
-    function get_vars()
-    {
-        $post = ci()->input->post();
-        $get = ci()->input->get();
-        $req_type = get_request_type();
-
-        // Different data handling for if there is a PUT request
-        if ($req_type === 'put' || $req_type === 'delete') {
-            parse_str(urldecode(file_get_contents('php://input')), $phpinput);
-
-        } else {
-            $phpinput = json_decode(file_get_contents('php://input'));
-
-        }
-        if (null === $post || !$post) {
-            $post = [];
-
-        }
-        if (null === $get || !$get) {
-            $get = [];
-
-        }
-        $vars = array_merge($post, $get, $phpinput);
-
-        return (object)$vars;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('json_to_csv')) {
-    /**
-     * Convert JSON objects to CSV and output/save.
-     *
-     * JSON should be an array of objects, dictionaries with simple data structures
-     * and the same keys in each object. The order of keys is taken from the first
-     * element.
-     *
-     * Example:
-     * json:
-     * [
-     *  { "key1": "value", "kye2": "value", "key3": "value" },
-     *  { "key1": "value", "kye2": "value", "key3": "value" },
-     *  { "key1": "value", "kye2": "value", "key3": "value" }
-     * ]
-     *
-     * The csv output: (keys will be used for first row):
-     * 1. key1, key2, key3
-     * 2. value, value, value
-     * 3. value, value, value
-     * 4. value, value, value
-     *
-     * Usage:
-     *
-     *     // echo a JSON string as CSV
-     *     json_to_csv($strJson);
-     *
-     *     // echo a JSON string as CSV
-     *     json_to_csv($arrJson);
-     *
-     *     // save a JSON string as CSV file
-     *     json_to_csv($strJson, '/save/path/csvFile.csv');
-     *
-     *     // save a JSON string as CSV file through the browser (no file saved)
-     *     json_to_csv($strJson, false, true);
-     *
-     * @param       $json
-     * @param  bool $csvFilePath
-     * @param  bool $boolOutputFile
-     *
-     * @throws FileNotWritableException
-     */
-    function json_to_csv($json, bool $csvFilePath = false, bool $boolOutputFile = false)
-    {
-        // Add the .CSV extension to the CSV filename if !not false
-        $csvFilePath !== false ? : str_replace($csvFilePath, $csvFilePath . '.csv', null);
-        // See if the string contains something
-        if (empty($json)) {
-            die('The JSON string is empty');
-        }
-        // If passed a string, turn it into an array
-        if (is_array($json) === false) {
-            $json = json_decode($json, true);
-        }
-        // If a path is included, open that file for handling. Otherwise, use a temp file
-        // (for echoing CSV string)
-        if ($csvFilePath !== false) {
-            $f = fopen($csvFilePath, 'wb');
-            if ($f === false) {
-                throw new FileNotWritableException("
-					Couldn't create the file to store the .CSV or the path is invalid. Make sure you 
-					include the full path, INCLUDING the name of the output file AND the .CSV file
-					extension (e.g. '../save/path/output.csv')
-				");
-            }
-        } else {
-            $boolEchoCsv = true;
-            if ($boolOutputFile === true) {
-                $boolEchoCsv = false;
-            }
-            $strTempFile = 'csvOutput' . date('U') . '.csv';
-            $f = fopen($strTempFile, 'wb');
-        }
-        $firstLineKeys = false;
-        foreach ($json as $line) {
-            if (empty($firstLineKeys)) {
-                $firstLineKeys = array_keys($line);
-                fputcsv($f, $firstLineKeys);
-                $firstLineKeys = array_flip($firstLineKeys);
-            }
-            // Using array_merge is important to maintain the order of keys according
-            // to the first element
-            fputcsv($f, array_merge($firstLineKeys, $line));
-        }
-        fclose($f);
-        // Take the file and put it to a string/file for output (if no save path was
-        // included in function arguments)
-        if ($boolOutputFile === true) {
-            if ($csvFilePath !== false) {
-                $file = $csvFilePath;
+        foreach ($array as $key => $value) {
+            // If $value is an array.
+            if (is_array($value)) {
+                // We need to loop through it.
+                recursive_array($value, $level + 1);
             } else {
-                $file = $strTempFile;
+                // It is not an array, so print it out.
+                echo str_repeat('-', $level), $value, '<br>';
             }
-            // Output the file to the browser (for open/save)
-            if (file_exists($file)) {
-                ci()->output
-                    ->set_content_type('text/csv')
-                    ->set_header('Content-Disposition: attachment; filename=' . basename($file))
-                    ->set_header('Content-Length: ' . filesize($file));
-                readfile($file);
-            }
-        } elseif ($boolEchoCsv === true) {
-            if (($handle = fopen($strTempFile, 'rb')) !== false) {
-                while (($data = fgetcsv($handle)) !== false) {
-                    echo implode(',', $data);
-                    echo '<br />';
-                }
-                fclose($handle);
-            }
-        }
-        // Delete the temp file
-        unlink($strTempFile);
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('json_csv')) {
-    /**
-     * A short method of creating CSV from JSON data
-     *
-     * @param string $jsonString
-     * @param string $csvFileName
-     */
-    function json_csv(string $jsonString, string $csvFileName = 'example.csv')
-    {
-        //Decode the JSON and convert it into an associative array.
-        $jsonDecoded = json_decode($jsonString, true);
-        // Open file pointer.
-        $fp = fopen($csvFileName, 'w+b');
-        // Loop through the associative array.
-        foreach ($jsonDecoded as $row) {
-            // Write the row to the CSV file.
-            fputcsv($fp, $row);
-        }
-        // Finally, close the file pointer.
-        fclose($fp);
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('pretty_dump')) {
-    /**
-     * A prettier version of var_dump() and print_r()
-     *
-     * @param        $var_expression
-     * @param string $dump_type
-     * @param bool   $use_pre_tags
-     */
-    function pretty_dump($var_expression, string $dump_type = 'print_r', bool $use_pre_tags = true)
-    {
-        if ($use_pre_tags) {
-            switch ($dump_type) {
-                case 'var_dump':
-                    echo '<pre>';
-                    var_dump($var_expression);
-                    echo '</pre>';
-                    exit();
-                    break;
-                case 'print_r':
-                    echo '<pre>';
-                    print_r($var_expression);
-                    echo '</pre>';
-                    exit();
-                    break;
-            }
-        }
-        header('Content-Type: application/json');
-        echo json_encode($var_expression);
-        exit;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('get_dates_query')) {
-    /**
-     * @param        $start
-     * @param        $end
-     * @param string $date_field
-     *
-     * @return string
-     */
-    function get_dates_query($start, $end, string $date_field = 'custom_date_field'): string
-    {
-        $query = "SELECT '{$start}' AS {$date_field} \n";
-        $current = $start;
-        while ($current < $end) {
-            $current = date('Y-m-d', strtotime($current . ' +1 day'));
-            $query .= "UNION SELECT '" . $current . "' \n";
         }
 
-        return $query;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('clean_string')) {
-    /**
-     * @param $str_text
-     *
-     * @return mixed
-     */
-    function clean_string($str_text)
-    {
-        $utf8 = [
-            '/[áàâãªä]/u' => 'a',
-            '/[ÁÀÂÃÄ]/u'  => 'A',
-            '/[ÍÌÎÏ]/u'   => 'I',
-            '/[íìîï]/u'   => 'i',
-            '/[éèêë]/u'   => 'e',
-            '/[ÉÈÊË]/u'   => 'E',
-            '/[óòôõºö]/u' => 'o',
-            '/[ÓÒÔÕÖ]/u'  => 'O',
-            '/[úùûü]/u'   => 'u',
-            '/[ÚÙÛÜ]/u'   => 'U',
-            '/ç/'         => 'c',
-            '/Ç/'         => 'C',
-            '/ñ/'         => 'n',
-            '/Ñ/'         => 'N',
-            '/–/'         => '-',
-            '/[’‘‹›‚]/u'  => ' ',
-            '/[“”«»„]/u'  => ' ',
-            '/ /'         => ' ',
-        ];
-
-        return preg_replace(array_keys($utf8), array_values($utf8), $str_text);
+        return null;
     }
 }
 // ----------------------------------------------------------------------------
@@ -1963,110 +1124,248 @@ if (!function_exists('is_array_multi')) {
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('get_file_or_folder')) {
+if (!function_exists('if_ie')) {
     /**
-     * Get a file or a folder
+     * A simple function to check whether or not we are running on Internet Explorer
      *
-     * @param  $data2
-     *
-     * @return bool|string
+     * @return bool
      */
-    function get_file_or_folder($data2)
+    function if_ie(): bool
     {
-        $data = str_replace(' ', '', $data2);
-        if ($data === '.' || $data === '..') {
-            return false;
-        }
-        $arr = explode('.', $data);
-        if (empty($arr[1])) {
-            /* Folder */
-            return 'folder';
-        } else {
-            $img = ['jpg', 'png', 'jpeg', 'gif'];
-            $file = ['html', 'css', 'js', 'php'];
-            /* File */
-            if ($arr[1] === 'zip') {
-                return 'zip';
-            } elseif (in_array($arr[1], $img, true)) {
-                return 'img';
-            } else {
-                return 'file';
-            }
-        }
+        return preg_match(
+                '~MSIE|Internet Explorer~i',
+                $_SERVER['HTTP_USER_AGENT']) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false);
     }
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('visitors_ip')) {
+if (!function_exists('if_iis')) {
     /**
+     * Check if on a Windows IIS Server, return TRUE if yes.
+     *
+     * @return bool
+     */
+    function if_iis(): bool
+    {
+        $software = strtolower($_SERVER['SERVER_SOFTWARE']);
+
+        return strpos($software, 'microsoft-iis') !== false;
+    }
+}
+// ----------------------------------------------------------------------------
+// When/If the function does not exist, let's create it!
+if (!function_exists('encode_json')) {
+    /**
+     * Returns the object in JSON form to be consumed by an endpoint
+     *
+     * @param mixed $json_data    The JSON data to pass into json_encode()
+     * @param int   $status       The HTTP Status Code [Default: 200 - OK]
+     */
+    function encode_json($json_data = null, int $status = 200)
+    {
+        // Assign the JSON to an empty array if $json_data is null
+        if (null === $json_data) {
+            $json_data = [];
+        }
+        // Use Codeigniter's Output class to set some basic header data
+        ci()->output
+            ->set_status_header($status)
+            ->set_content_type('application/json');
+        // Output the JSON data and exit the script's execution cycle
+        echo json_encode($json_data, JSON_PRETTY_PRINT);
+        exit;
+    }
+}
+// ----------------------------------------------------------------------------
+// When/If the function does not exist, let's create it!
+if (!function_exists('json_to_csv')) {
+    /**
+     * Convert JSON objects to CSV and output/save.
+     *
+     * JSON should be an array of objects, dictionaries with simple data structures
+     * and the same keys in each object. The order of keys is taken from the first
+     * element.
+     *
+     * Example:
+     * json:
+     * [
+     *  { "key1": "value", "kye2": "value", "key3": "value" },
+     *  { "key1": "value", "kye2": "value", "key3": "value" },
+     *  { "key1": "value", "kye2": "value", "key3": "value" }
+     * ]
+     *
+     * The csv output: (keys will be used for first row):
+     * 1. key1, key2, key3
+     * 2. value, value, value
+     * 3. value, value, value
+     * 4. value, value, value
+     *
+     * Usage:
+     *
+     *     // echo a JSON string as CSV
+     *     json_to_csv($strJson);
+     *
+     *     // echo a JSON string as CSV
+     *     json_to_csv($arrJson);
+     *
+     *     // save a JSON string as CSV file
+     *     json_to_csv($strJson, '/save/path/csvFile.csv');
+     *
+     *     // save a JSON string as CSV file through the browser (no file saved)
+     *     json_to_csv($strJson, false, true);
+     *
+     * @param       $json
+     * @param  bool $csvFilePath
+     * @param  bool $boolOutputFile
+     *
+     * @throws FileNotWritableException
+     */
+    function json_to_csv($json, bool $csvFilePath = false, bool $boolOutputFile = false)
+    {
+        // Add the .CSV extension to the CSV filename if !not false
+        $csvFilePath !== false ? : str_replace($csvFilePath, $csvFilePath . '.csv', null);
+        // See if the string contains something
+        if (empty($json)) {
+            die('The JSON string is empty');
+        }
+        // If passed a string, turn it into an array
+        if (is_array($json) === false) {
+            $json = json_decode($json, true);
+        }
+        // If a path is included, open that file for handling. Otherwise, use a temp file
+        // (for echoing CSV string)
+        if ($csvFilePath !== false) {
+            $f = fopen($csvFilePath, 'wb');
+            if ($f === false) {
+                throw new FileNotWritableException("
+					Couldn't create the file to store the .CSV or the path is invalid. Make sure you 
+					include the full path, INCLUDING the name of the output file AND the .CSV file
+					extension (e.g. '../save/path/output.csv')
+				");
+            }
+        } else {
+            $boolEchoCsv = true;
+            if ($boolOutputFile === true) {
+                $boolEchoCsv = false;
+            }
+            $strTempFile = 'csvOutput' . date('U') . '.csv';
+            $f = fopen($strTempFile, 'wb');
+        }
+        $firstLineKeys = false;
+        foreach ($json as $line) {
+            if (empty($firstLineKeys)) {
+                $firstLineKeys = array_keys($line);
+                fputcsv($f, $firstLineKeys);
+                $firstLineKeys = array_flip($firstLineKeys);
+            }
+            // Using array_merge is important to maintain the order of keys according
+            // to the first element
+            fputcsv($f, array_merge($firstLineKeys, $line));
+        }
+        fclose($f);
+        // Take the file and put it to a string/file for output (if no save path was
+        // included in function arguments)
+        if ($boolOutputFile === true) {
+            if ($csvFilePath !== false) {
+                $file = $csvFilePath;
+            } else {
+                $file = $strTempFile;
+            }
+            // Output the file to the browser (for open/save)
+            if (file_exists($file)) {
+                ci()->output
+                    ->set_content_type('text/csv')
+                    ->set_header('Content-Disposition: attachment; filename=' . basename($file))
+                    ->set_header('Content-Length: ' . filesize($file));
+                readfile($file);
+            }
+        } elseif ($boolEchoCsv === true) {
+            if (($handle = fopen($strTempFile, 'rb')) !== false) {
+                while (($data = fgetcsv($handle)) !== false) {
+                    echo implode(',', $data);
+                    echo '<br />';
+                }
+                fclose($handle);
+            }
+        }
+        // Delete the temp file
+        unlink($strTempFile);
+    }
+}
+// ----------------------------------------------------------------------------
+// When/If the function does not exist, let's create it!
+if (!function_exists('pretty_dump')) {
+    /**
+     * A prettier version of var_dump() and print_r()
+     *
+     * @param        $var_expression
+     * @param string $dump_type
+     * @param bool   $use_pre_tags
+     */
+    function pretty_dump($var_expression, string $dump_type = 'print_r', bool $use_pre_tags = true)
+    {
+        if ($use_pre_tags) {
+            switch ($dump_type) {
+                case 'var_dump':
+                    echo '<pre>';
+                    var_dump($var_expression);
+                    echo '</pre>';
+                    exit();
+                    break;
+                case 'print_r':
+                    echo '<pre>';
+                    print_r($var_expression);
+                    echo '</pre>';
+                    exit();
+                    break;
+            }
+        }
+        header('Content-Type: application/json');
+        echo json_encode($var_expression);
+        exit;
+    }
+}
+// ----------------------------------------------------------------------------
+// When/If the function does not exist, let's create it!
+if (!function_exists('clean_string')) {
+    /**
+     * @param $str_text
+     *
      * @return mixed
      */
-    function visitors_ip()
+    function clean_string($str_text)
     {
-        $client_ip = @$_SERVER['HTTP_CLIENT_IP'];
-        $forwarded_ip = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-        $remote_ip = $_SERVER['REMOTE_ADDR'];
-        if (filter_var($client_ip, FILTER_VALIDATE_IP)) {
-            $ip_address = $client_ip;
-        } elseif (filter_var($forwarded_ip, FILTER_VALIDATE_IP)) {
-            $ip_address = $forwarded_ip;
-        } else {
-            $ip_address = $remote_ip;
-        }
-
-        return $ip_address;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('visitors_ip_short')) {
-    /**
-     * @return null|string
-     */
-    function visitors_ip_short(): ?string
-    {
-        return $_SERVER['HTTP_X_REAL_IP']
-            ?? $_SERVER['HTTP_X_FORWARDED_FOR']
-            ?? $_SERVER['HTTP_CLIENT_IP']
-            ?? $_SERVER['REMOTE_ADDR']
-            ?? null;
-    }
-}
-// ----------------------------------------------------------------------------
-// When/If the function does not exist, let's create it!
-if (!function_exists('get_client_ip')) {
-    /**
-     * @return null|string
-     */
-    function get_client_ip()
-    {
-        $result = null;
-        $ipSourceList = [
-            'HTTP_CLIENT_IP',
-            'HTTP_X_FORWARDED_FOR',
-            'HTTP_X_FORWARDED',
-            'HTTP_FORWARDED_FOR',
-            'HTTP_FORWARDED',
-            'REMOTE_ADDR',
+        $utf8 = [
+            '/[áàâãªä]/u' => 'a',
+            '/[ÁÀÂÃÄ]/u'  => 'A',
+            '/[ÍÌÎÏ]/u'   => 'I',
+            '/[íìîï]/u'   => 'i',
+            '/[éèêë]/u'   => 'e',
+            '/[ÉÈÊË]/u'   => 'E',
+            '/[óòôõºö]/u' => 'o',
+            '/[ÓÒÔÕÖ]/u'  => 'O',
+            '/[úùûü]/u'   => 'u',
+            '/[ÚÙÛÜ]/u'   => 'U',
+            '/ç/'         => 'c',
+            '/Ç/'         => 'C',
+            '/ñ/'         => 'n',
+            '/Ñ/'         => 'N',
+            '/–/'         => '-',
+            '/[’‘‹›‚]/u'  => ' ',
+            '/[“”«»„]/u'  => ' ',
+            '/ /'         => ' ',
         ];
-        foreach ($ipSourceList as $ipSource) {
-            if (isset($_SERVER[$ipSource])) {
-                $result = $_SERVER[$ipSource];
-                echo $result . "\t" . $ipSource . " \n";
-                break;
-            }
-        }
 
-        return $result;
+        return preg_replace(array_keys($utf8), array_values($utf8), $str_text);
     }
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if (!function_exists('get_real_ip')) {
+if (!function_exists('get_ip')) {
     /**
      * @return array|false|string
      */
-    function get_real_ip()
+    function get_ip()
     {
         if ($_SERVER !== null) {
             if (isset($_SERVER['	'])) {
@@ -2080,18 +1379,16 @@ if (!function_exists('get_real_ip')) {
             } else {
                 $ip = $_SERVER['REMOTE_ADDR'];
             }
-        } else {
-            if (getenv('HTTP_X_FORWARDED_FOR')) {
-                $ip = getenv('HTTP_X_FORWARDED_FOR');
-                if (strpos($ip, ',')) {
-                    $exp_ip = explode(',', $ip);
-                    $ip = $exp_ip[0];
-                }
-            } elseif (getenv('HTTP_CLIENT_IP')) {
-                $ip = getenv('HTTP_CLIENT_IP');
-            } else {
-                $ip = getenv('REMOTE_ADDR');
+        } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
+            $ip = getenv('HTTP_X_FORWARDED_FOR');
+            if (strpos($ip, ',')) {
+                $exp_ip = explode(',', $ip);
+                $ip = $exp_ip[0];
             }
+        } elseif (getenv('HTTP_CLIENT_IP')) {
+            $ip = getenv('HTTP_CLIENT_IP');
+        } else {
+            $ip = getenv('REMOTE_ADDR');
         }
 
         return $ip;
@@ -2112,7 +1409,7 @@ if (!function_exists('UUIDv4')) {
      *
      * @return string The UUID
      *
-     * @throws \Exception
+     * @throws \RuntimeException
      */
     function UUIDv4(): string
     {
@@ -2123,7 +1420,7 @@ if (!function_exists('UUIDv4')) {
             $bytes[8] = chr((ord($bytes[8]) & 0x3f) | 0x80);
             $uuid = \vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($bytes), 4));
         } catch (Exception $e) {
-            throw new Exception('Cannot generate UUID()');
+            throw new RuntimeException('Cannot generate UUID()');
         }
 
         // Return the UUID
@@ -2149,7 +1446,7 @@ if (!function_exists('parse_link_header')) {
     function parse_link_header($header)
     {
         if ('' === $header) {
-            throw new \RuntimeException("input must not be of zero length");
+            throw new \RuntimeException('input must not be of zero length');
         }
         $parts = explode(',', $header);
         $links = [];
@@ -2158,17 +1455,17 @@ if (!function_exists('parse_link_header')) {
             if (count($section) !== 2) {
                 throw new \RuntimeException("section could not be split on ';'");
             }
-            $url = trim(preg_replace("/<(.*)>/", '$1', $section[0]));
-            $name = trim(preg_replace("/rel=\"(.*)\"/", '$1', $section[1]));
+            $url = trim(preg_replace('/<(.*)>/', '$1', $section[0]));
+            $name = trim(preg_replace('/rel="(.*)"/', '$1', $section[1]));
             $links[$name] = $url;
         }
+
         return $links;
     }
 }
 // ----------------------------------------------------------------------------
 // When/If the function does not exist, let's create it!
-if ( ! function_exists('translate_slug'))
-{
+if (!function_exists('translate_slug')) {
     /*
      * Translate a slugified string
      *
@@ -2178,12 +1475,12 @@ if ( ! function_exists('translate_slug'))
      */
     function translate_slug(string $string): string
     {
-    	// Load the helpers
+        // Load the helpers
         load_helper('text');
         load_helper('url');
 
         // Replace unsupported characters
-        $string = str_replace(["'", ".", "²"], ['-', '-', '2'], $string);
+        $string = str_replace(["'", '.', '²'], ['-', '-', '2'], $string);
 
         // Slugify and return the string
         return url_title(convert_accented_characters($string), 'dash', true);

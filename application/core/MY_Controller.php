@@ -38,6 +38,9 @@ class MY_Controller extends REST_Controller
     /**
      * Build application controller components upon class construction
      *
+     * @see \Logger::log()
+     * @see \send_log()
+     *
      * @param  string $config Optional REST Library config file
      */
     public function __construct(string $config = 'rest')
@@ -50,6 +53,7 @@ class MY_Controller extends REST_Controller
          * requests
          */
         if (is_cli() && ENVIRONMENT === 'development') {
+            // Load the CLI Helper
             load_helper('cli');
         }
 
@@ -67,7 +71,6 @@ class MY_Controller extends REST_Controller
     public function __destruct()
     {
         parent::__destruct();
-
         unset($this->data);
     }
 

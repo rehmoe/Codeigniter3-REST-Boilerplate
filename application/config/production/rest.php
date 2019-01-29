@@ -299,7 +299,7 @@ $config['rest_database_group'] = 'default';
 | The table name in your database that stores API keys
 |
 */
-$config['rest_keys_table'] = 'keys';
+$config['rest_keys_table'] = 'api_keys';
 
 /*
 |--------------------------------------------------------------------------
@@ -404,7 +404,7 @@ $config['rest_key_name'] = 'X-API-KEY';
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_logging'] = false;
+$config['rest_enable_logging'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -415,7 +415,7 @@ $config['rest_enable_logging'] = false;
 | table name to match e.g. my_logs
 |
 */
-$config['rest_logs_table'] = 'logs';
+$config['rest_logs_table'] = 'api_logs';
 
 /*
 |--------------------------------------------------------------------------
@@ -448,7 +448,7 @@ $config['rest_enable_access'] = false;
 | table name to match e.g. my_access
 |
 */
-$config['rest_access_table'] = 'access';
+$config['rest_access_table'] = 'api_access';
 
 /*
 |--------------------------------------------------------------------------
@@ -459,7 +459,7 @@ $config['rest_access_table'] = 'access';
 | Set to FALSE to log as serialized PHP
 |
 */
-$config['rest_logs_json_params'] = false;
+$config['rest_logs_json_params'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -498,7 +498,7 @@ $config['rest_enable_limits'] = false;
 | table name to match e.g. my_limits
 |
 */
-$config['rest_limits_table'] = 'limits';
+$config['rest_limits_table'] = 'api_limits';
 
 /*
 |--------------------------------------------------------------------------
@@ -524,7 +524,7 @@ $config['rest_ignore_http_accept'] = false;
 | Hint: This is good for production environments
 |
 */
-$config['rest_ajax_only'] = true;
+$config['rest_ajax_only'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -604,6 +604,5 @@ $config['allow_any_cors_domain'] = true;
 |
 */
 $config['allowed_cors_origins'] = [
-    'http://localhost',
-    'http://vue',
+    'http://localhost'
 ];
