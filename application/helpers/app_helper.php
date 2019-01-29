@@ -2183,9 +2183,7 @@ if ( ! function_exists('translate_slug'))
         load_helper('url');
 
         // Replace unsupported characters
-        $string = str_replace("'", '-', $string);
-        $string = str_replace(".", '-', $string);
-        $string = str_replace("²", '2', $string);
+        $string = str_replace(["'", ".", "²"], ['-', '-', '2'], $string);
 
         // Slugify and return the string
         return url_title(convert_accented_characters($string), 'dash', true);
