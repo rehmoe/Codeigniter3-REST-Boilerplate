@@ -2,7 +2,7 @@
 
 /**
  * The JWT Controller Class is used to demonstrate the encoding and decoding of
- *JSON Web Tokens using the built-in JWT library
+ * JSON Web Tokens using the built-in JWT library
  */
 class JWTController extends MY_Controller
 {
