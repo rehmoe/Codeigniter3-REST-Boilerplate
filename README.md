@@ -102,7 +102,7 @@ ROOT/
  - `Monolog` PSR3 Logger Integration
  - `MY_Controller` for REST API calls
  - `constants.php` with some extra goodies
- - Luthier routing for Codeigniter 3
+ - Luthier routing/middleware for Codeigniter 3
  - Chris Kacerguis/Phil Sturgeon's REST Library
  - Complete composer dependency control
  - Most commonly used libraries/helpers are autoloaded
