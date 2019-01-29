@@ -219,7 +219,11 @@ A small list of things I would like to do by the version 2.0.0 release:
    - ~~A model~~
    - ~~Routes~~
    - ~~Docs~~
- - An example representation of authentication
+   
+ - Finish refactoring the migration files and get them working fully
+   - I am thinking that the `Luthier-CI` package is having issues when running migrations where all migrations do not run. This will be fixed for the 1.2.0 release 
+
+ - An example representation of authentication. This should be ready by the 2.0.0 release.
    - Using an AuthMiddleware
      - Using basic auth
      - Using digest auth 
