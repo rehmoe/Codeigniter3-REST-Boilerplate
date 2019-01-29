@@ -200,6 +200,10 @@ It's also possible to use one of these special values as version:
  - reverse: reverses ALL migrations
  - refresh: reverses ALL migrations and then proceeds to migrate to the latest available version
 
+### Running the SQL File:
+Alternately, you may simply import the SQL file located at `APPPPATH/database/sql/rest_api.sql` into 
+your favorite RDBMS to get the desired tables.
+
 Examples
 ````
 $ php index.php luthier migrate reverse
