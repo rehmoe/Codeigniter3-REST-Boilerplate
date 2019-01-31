@@ -58,8 +58,9 @@ class MY_Controller extends REST_Controller
         }
 
         // Check to make sure we are running on PHP >= 7.2.0
-        if (PHP_VERSION < '7.2.0') {
-            die('PHP Version of 7.2.0 is required. Your PHP Version is ' . PHP_VERSION);
+        $minPhpVersion = '7.2.0';
+        if (PHP_VERSION < $minPhpVersion) {
+            die("PHP Version of {$minPhpVersion} is required. Your PHP Version is " . PHP_VERSION);
         }
     }
 

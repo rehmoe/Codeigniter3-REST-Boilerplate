@@ -7,18 +7,19 @@
 class JWTController extends MY_Controller
 {
     /**
-     * Secret Key for JSON Web Token
+     * Secret Key for the JSON Web Token
      *
-     * @var string
+     * @var string $key
      */
-    private $key = 'super-secret-key';
+    private static $key = 'super-secret-key';
 
     /**
-     * A data array to encode using a JSON Web Token
+     * A data array to encode and decode using the
+     * $key
      *
      * @var array $payload
      */
-    private $payload = [
+    private static $payload = [
         'key_0' => 'value_0',
         'key_1' => 'value_1',
         'key_2' => 'value_2',
@@ -31,7 +32,7 @@ class JWTController extends MY_Controller
     /**
      * Encode a JSON Web Token
      *
-     * @see    \JWT::encode()
+     * @see   \JWT::encode()
      *
      * @param string|null $key
      *
@@ -39,7 +40,8 @@ class JWTController extends MY_Controller
      */
     public function encode_get(string $key = null): void
     {
-        $jwt = $this->jwt->encode($this->payload, $key);
+        // Let's encode the key using the payload
+        $jwt = $this->jwt->encode(self::$payload, $key);
 
         if (!$key || $key === null) {
             $this->response([
@@ -82,7 +84,7 @@ class JWTController extends MY_Controller
      */
     public function decode_get(string $payload = null): void
     {
-        $jwt = $this->jwt->decode($payload, $this->key);
+        $jwt = $this->jwt->decode($payload, self::$key);
 
         if (!$payload || $payload === null) {
             $this->response([
