@@ -228,4 +228,3 @@ A small list of things I would like to do by the version 2.0.0 release:
      - Using basic auth
      - Using digest auth 
      - Using JWT for Auth
-     - Using OAuth2 (maybe)
