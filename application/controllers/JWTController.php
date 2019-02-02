@@ -40,9 +40,10 @@ class JWTController extends MY_Controller
      */
     public function encode_get(string $key = null): void
     {
-        // Let's encode the key using the payload
+        // Let's encode JWT
         $jwt = $this->jwt->encode(self::$payload, $key);
 
+        // Build the response
         if (!$key || $key === null) {
             $this->response([
                 'message' => 'Bad Request',
@@ -77,16 +78,18 @@ class JWTController extends MY_Controller
      *
      * @see    \JWT::decode()
      *
-     * @param  string $payload
+     * @param  string $jwt The JSON Web Token
      *
      * @throws DomainException
      * @throws UnexpectedValueException
      */
-    public function decode_get(string $payload = null): void
+    public function decode_get(string $jwt = null): void
     {
-        $jwt = $this->jwt->decode($payload, self::$key);
+        // Let's encode JWT
+        $payload = $this->jwt->decode($jwt, self::$key);
 
-        if (!$payload || $payload === null) {
+        // Build the response
+        if (!$jwt || $jwt === null) {
             $this->response([
                 'message' => 'Bad Request',
                 'success' => false,
@@ -94,12 +97,12 @@ class JWTController extends MY_Controller
                 'payload' => null,
             ], HTTP_BAD_REQUEST);
 
-        } elseif ($jwt) {
+        } elseif ($payload) {
             $this->response([
                 'message' => 'JWT Decoded Successfully',
                 'success' => true,
                 'status'  => HTTP_OK,
-                'payload' => $jwt,
+                'payload' => $payload,
             ], HTTP_OK);
 
         } else {
