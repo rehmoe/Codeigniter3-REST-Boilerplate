@@ -44,15 +44,23 @@ class JWTController extends MY_Controller
         $jwt = $this->jwt->encode(self::$payload, $key);
 
         // Build the response
-        if (!$key || $key === null) {
+        if (!$key || $key === null || !\is_string($key)) {
             $this->response([
-                'message' => 'Bad Request',
+                'message' => 'Please provide a valid key',
                 'success' => false,
                 'status'  => HTTP_BAD_REQUEST,
                 'jwt'     => null,
             ], HTTP_BAD_REQUEST);
 
-        } elseif ($jwt) {
+        } elseif (self::$key !== $key) {
+            $this->response([
+                'message' => 'Key Mismatch',
+                'success' => true,
+                'status'  => HTTP_UNAUTHORIZED,
+                'jwt'     => null,
+            ], HTTP_OK);
+
+        } elseif (self::$key === $key) {
             $this->response([
                 'message' => 'JWT Encoded Successfully',
                 'success' => true,
@@ -89,7 +97,7 @@ class JWTController extends MY_Controller
         $payload = $this->jwt->decode($jwt, self::$key);
 
         // Build the response
-        if (!$jwt || $jwt === null) {
+        if (!$jwt || $jwt === null || !\is_string($jwt)) {
             $this->response([
                 'message' => 'Bad Request',
                 'success' => false,
