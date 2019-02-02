@@ -1,5 +1,5 @@
 application/writable/
 application/vendor/
-application/config/
+application/development/config/
 .gitignore
 .idea/
