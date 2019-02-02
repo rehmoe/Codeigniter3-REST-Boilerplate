@@ -11,6 +11,6 @@ Route::resource('sessions', 'SessionController', [
 // ----------------------------- JWT EXAMPLES ---------------------------------
 // Example routes for demonstrating the built-in JWT Library
 Route::group('/jwt', function() {
-    Route::get('/encode/{any:payload}', 'JWTController@encode');
-    Route::get('/decode/{any:payload}', 'JWTController@decode');
+    Route::get('/encode/{any:key}', 'JWTController@encode');
+    Route::get('/decode/{any:jwt}', 'JWTController@decode');
 });
