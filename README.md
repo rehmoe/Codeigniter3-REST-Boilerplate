@@ -97,7 +97,7 @@ ROOT/
  - [Faker](https://github.com/fzaninotto/Faker)
 
 ## Includes
- - Built-in `JWT` Library (See the example [Controller](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/controllers/JWTController.php) and [Route](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/routes/api.php#L13))
+ - Built-in `JWT` Library (See the example [Controller](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/controllers/JWTController.php), [Routes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/routes/api.php#L13) & [Docs](https://documenter.getpostman.com/view/1486787/RznBMKeo#3835e400-9fbc-4b9b-b90d-7a46da6e891d))
  - `MY_Model` by [Avenir](https://github.com/avenirer/CodeIgniter-MY_Model)
  - `Monolog` PSR3 Logger Integration
  - `MY_Controller` for REST API calls
