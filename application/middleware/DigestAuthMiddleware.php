@@ -4,7 +4,7 @@
 use Luthier\MiddlewareInterface;
 
 /**
- * The DigestAuthMiddleware Class is used to ensure that the users processes
+ * The DigestAuthMiddleware Class is used to ensure that the users make their
  * requests using Digest Authentication
  *
  * @link https://blog.restcase.com/restful-api-authentication-basics/
