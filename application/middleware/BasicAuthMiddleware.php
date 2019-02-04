@@ -4,7 +4,7 @@
 use Luthier\MiddlewareInterface;
 
 /**
- * The BasicAuthMiddleware Class is used to ensure that the users processes
+ * The BasicAuthMiddleware Class is used to ensure that the users make their
  * requests using Basic Authentication
  *
  * @link https://blog.restcase.com/restful-api-authentication-basics/
