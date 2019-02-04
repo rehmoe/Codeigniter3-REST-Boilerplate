@@ -1,9 +1,5 @@
  # CodeIgniter REST API Boilerplate
  
- This is an MVC boilerplate for REST APIs powered by PHP, JWT, Composer and Codeigniter 3. If you'd like to see the Postman docs for the provided 
- `Sessions`, `Home` & `JWT` examples, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo). To check out the official 
- versioned releases of this repo, go [here](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases).
- 
   - The current stable version is [v.1.0](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases/tag/1.1.0)
 
 # T.O.C (Table of Contents)
@@ -19,8 +15,9 @@
  - [TODO's](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#todos)
  
 # Synopsis
-This is a boilerplate for REST APIs using Codeigniter 3. I built this as a 
-small scaffold for my API based projects and tried making it as 
+
+ 
+This is an MVC boilerplate for REST APIs powered by PHP, JWT, Composer and Codeigniter 3. If you'd like to see the Postman docs for the provided `Sessions`, `Home` & `JWT` examples, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo). To check out the official versioned releases of this repo, go [here](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases).. I built this as a small scaffold for my API based projects and tried making it as 
 un-opinionated as possible. It contains a number of cool features for REST 
 APIs such as a built-in JWT library, static routes and middleware brought to us by the amazing 
 `Luthier-CI` package, a proper REST Controller library brought to us by Phil Sturgeon
