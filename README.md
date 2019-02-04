@@ -1,6 +1,6 @@
  # CodeIgniter REST API Boilerplate
  
-  - The current stable version is [v.1.0](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases/tag/1.1.0)
+  - The current stable version is [v.1.1](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases/tag/1.1.0)
 
 # T.O.C (Table of Contents)
  - [Synopsis](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate#synopsis)
