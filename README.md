@@ -30,14 +30,12 @@ composer dependencies and integration for libraries like `Monolog` PSR3
 Logger library, Dotenv by Vance Lucas for Environment configuration and 
 Whoops Errors for Cool Kids for API/UI errors during development as well as a 
 series of helper files, hooks and migrations to make the instantiation of REST 
-APIs far quicker and far more simple.
+APIs far quicker and far more simple. 
 
-I built this because I primarily build APIs and I absolutely love working with the CodeIgniter framework.
-Also this was built to keep the DRY KISS approach in all of my future API projects, while modernizing CodeIgniter 3
+I primarily build APIs and I absolutely love working with the 
+CodeIgniter framework and I wanted to keep the DRY KISS approach in all of my future API projects, while modernizing CodeIgniter 3
 to allow it to be used for years to come with best practices at the forefront of boilerplate's design and structure.
-This is due to me wanting to generate my own scaffold code using CLI, to eliminate the need to constantly adjust the 
-Codeigniter folder structure and move the application/system directories outside of the publicly
-accessible scope and to eliminate the need to repeat tasks that are common when setting up an API focused
+This is due to me wanting to eliminate the need to repeat tasks that are common when setting up an API focused
 'micro-framework' using Codeigniter. 
 
 Please note, that this boilerplate is geared towards building only APIs and not initially built  for User Interface 
@@ -191,11 +189,11 @@ This will run the  `20170706025420_create_table_users` migration file
 
 It's also possible to use one of these special values as version:
 
- - reverse: reverses ALL migrations
+ - `reverse` reverses ALL migrations
 ````
 $ php index.php luthier migrate reverse
 ````
- - refresh: reverses ALL migrations and then proceeds to migrate to the latest available version
+ - `refresh` reverses ALL migrations and then proceeds to migrate to the latest available version
  ````
 $ php index.php luthier migrate refresh
 ````
