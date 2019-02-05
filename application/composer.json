@@ -11,14 +11,14 @@
     "lcobucci/jwt": "3.2.*",
     "luthier/luthier": "^1.0",
     "monolog/monolog": "^1.23",
-    "nesbot/carbon": "2.10.*",
+    "nesbot/carbon": "2.11.*",
     "vlucas/phpdotenv": "3.3.*"
   },
   "require-dev": {
     "crazycodr/standard-exceptions": "2.3.*",
     "filp/whoops": "2.3.*",
     "fzaninotto/faker": "1.8.*",
-    "mikey179/vfsStream": "1.1.*",
+    "mikey179/vfsStream": "1.6.*",
     "symfony/console": "^4.2",
     "symfony/var-dumper": "4.2.*"
   },
