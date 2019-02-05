@@ -39,13 +39,13 @@ series of helper files, hooks and migrations to make the instantiation of REST
 APIs far quicker and far more simple. 
 
 Please note, that this boilerplate is geared towards building only APIs and not initially built  for User Interface 
-mechanics (although that still can be done). 
+mechanics (although that can still be done). 
 
 I hope everyone enjoys this and finds it useful. Please feel free to offer
 any advice or issue PRs and fixes where you see fit. All credit for the 
 Codeigniter framework goes to the Codeigniter team at BCIT and credit for
 the composer dependencies goes to their respective authors. Without their
-work, this would've been a lot more difficult of an approach =)
+work, this would've been a lot more difficult of a task =)
 
 ## Folder Structure
 
@@ -104,7 +104,7 @@ ROOT/
  - A series of robust helper files from CLI's to Databases
  - Migration files for all of the database tables, including `ci_sessions` and the REST Library
  - Example Controller, Route, Model and Migration files to demonstrate the API
-   - Example Postman documentation for this is included
+   - Example Postman documentation for this is included [here](https://documenter.getpostman.com/view/1486787/RznBMKeo#3835e400-9fbc-4b9b-b90d-7a46da6e891d)
  - And much more... It is best to just go ahead and take a look!
  
 ## Project Setup
