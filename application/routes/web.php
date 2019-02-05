@@ -16,7 +16,11 @@ Route::group('/', function() {
 
 // `404 Override`
 Route::set('404_override', function () {
-    show_404();
+    echo json_encode([
+        'message' => 'Resource not found',
+        'success' => false,
+        'status' => HTTP_NOT_FOUND
+    ], JSON_PRETTY_PRINT);
 });
 
 // Translate URI Dashes?
