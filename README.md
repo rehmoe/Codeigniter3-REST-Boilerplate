@@ -18,7 +18,7 @@
 # Synopsis
 
  
-This is an MVC boilerplate for REST APIs powered by PHP, JWT, Composer and Codeigniter 3. If you'd like to see the Postman docs for the provided `Sessions`, `Home` & `JWT` examples, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo). To check out the official versioned releases of this repo, go [here](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases). 
+This is an MVC boilerplate for REST APIs powered by PHP, JWT, Composer and Codeigniter 3 with CLI based code generation. If you'd like to see the Postman docs for the provided `Sessions`, `Home` & `JWT` examples, you can visit this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo). To check out the official versioned releases of this repo, go [here](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/releases). 
 
 I built this as a small scaffold for my API based projects and tried making it as 
 un-opinionated as possible. It contains a number of cool features for REST 
@@ -100,6 +100,7 @@ ROOT/
 ## Includes
  - Built-in `JWT` Library (See the example [Controller](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/controllers/JWTController.php), [Routes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/routes/api.php#L13) & [Docs](https://documenter.getpostman.com/view/1486787/RznBMKeo#3835e400-9fbc-4b9b-b90d-7a46da6e891d))
  - `MY_Model` by [Avenir](https://github.com/avenirer/CodeIgniter-MY_Model)
+ - Code Generator for Controllers, Models, Helpers, Migrations and Libraries
  - `Monolog` PSR3 Logger Integration
  - `MY_Controller` for REST API calls
  - `constants.php` with some extra goodies
