@@ -16,6 +16,12 @@ Route::group('/', function() {
 
 // `404 Override`
 Route::set('404_override', function () {
+    // Using the \CI_Output class we can get the response data set
+    ci()->output
+        ->set_content_type('application/json')
+        ->set_status_header(HTTP_NOT_FOUND);
+
+    // Then we can echo the encoded JSON message
     echo json_encode([
         'message' => 'Resource not found',
         'success' => false,
