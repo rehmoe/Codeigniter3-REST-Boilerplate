@@ -37,7 +37,7 @@ class DotEnvHook
     public function bootDotEnv(): void
     {
         // Load the file
-        $this->dotEnv = Dotenv::create(FCPATH);
+        $this->dotEnv = Dotenv::create(__DIR__ . '/../../');
         // Load PhpDotEnv
         $this->dotEnv->load();
     }
