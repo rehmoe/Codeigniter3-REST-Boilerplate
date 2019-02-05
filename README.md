@@ -24,8 +24,8 @@ I built this as a small scaffold for my API based projects and tried making it a
 un-opinionated as possible. It contains a number of cool features for REST 
 APIs such as a built-in JWT library, static routes and middleware brought to us by the amazing 
 `Luthier-CI` package, a proper REST Controller library brought to us by Phil Sturgeon
-and Chris Kacerguis, a small but useful `MY_Controller` and an amazing 
-`MY_Model` brought to us by Avenir. Also included is a cool assortment of
+and Chris Kacerguis, a small but useful `MY_Controller` and an extensive 
+`MY_Model`. Also included is a cool assortment of
 composer dependencies and integration for libraries like `Monolog` PSR3 
 Logger library, Dotenv by Vance Lucas for Environment configuration and 
 Whoops Errors for Cool Kids for API/UI errors during development as well as a 
