@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2019 at 06:37 PM
+-- Generation Time: Feb 05, 2019 at 08:51 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -198,7 +198,7 @@ ALTER TABLE `api_limits`
 -- AUTO_INCREMENT for table `api_logs`
 --
 ALTER TABLE `api_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `api_users`
