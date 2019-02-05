@@ -35,19 +35,13 @@ APIs far quicker and far more simple.
 I built this because I primarily build APIs and I absolutely love working with the CodeIgniter framework.
 Also this was built to keep the DRY KISS approach in all of my future API projects, while modernizing CodeIgniter 3
 to allow it to be used for years to come with best practices at the forefront of boilerplate's design and structure.
-This is due to me wanting to eliminate the need to constantly adjust the Codeigniter 
-folder structure and move the application directory outside of the publicly
-accessible scope and to eliminate the need to repeat tasks like the need 
-to constantly configure a composer.json file for dependencies or load 
-helper files, separate the config into an environment based structure, 
-initiate the REST Controller library, add a `MY_Model` file, monitor my dependencies, etc, etc, etc. Please 
-note, that this boilerplate is geared towards building only APIs and not initially built  for User Interface 
-mechanics (although that still can be done). 
+This is due to me wanting to generate my own scaffold code using CLI, to eliminate the need to constantly adjust the 
+Codeigniter folder structure and move the application/system directories outside of the publicly
+accessible scope and to eliminate the need to repeat tasks that are common when setting up an API focused
+'micro-framework' using Codeigniter. 
 
-After installation, run the sessions migration,
-switch to database sessions and go to `http://mysite.com/sessions` in a Postman 
-style app or via cURL, etc and test out a real time demonstration of this project.
-Alternately, you can visit the Postman docs of this very example by going to this [link](https://documenter.getpostman.com/view/1486787/RznBMKeo)
+Please note, that this boilerplate is geared towards building only APIs and not initially built  for User Interface 
+mechanics (although that still can be done). 
 
 I hope everyone enjoys this and finds it useful. Please feel free to offer
 any advice or issue PRs and fixes where you see fit. All credit for the 
@@ -92,7 +86,6 @@ ROOT/
  - [Whoops Error Handler](https://github.com/filp/whoops)
  - [Standard Exceptions](https://github.com/crazycodr/standard-exceptions)
  - [Php Dotenv Library](https://github.com/vlucas/phpdotenv)
- - [Firebase-JWT](https://github.com/firebase/php-jwt)
  - [Luthier-CI](https://github.com/ingeniasoftware/luthier-ci)
  - [Monolog](https://github.com/Seldaek/monolog)
  - [Faker](https://github.com/fzaninotto/Faker)
@@ -101,21 +94,20 @@ ROOT/
  - Built-in `JWT` Library (See the example [Controller](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/controllers/JWTController.php), [Routes](https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate/blob/master/application/routes/api.php#L13) & [Docs](https://documenter.getpostman.com/view/1486787/RznBMKeo#3835e400-9fbc-4b9b-b90d-7a46da6e891d))
  - `MY_Model` by [Avenir](https://github.com/avenirer/CodeIgniter-MY_Model)
  - Code Generator for Controllers, Models, Helpers, Migrations and Libraries
- - `Monolog` PSR3 Logger Integration
- - `MY_Controller` for REST API calls
- - `constants.php` with some extra goodies
+ - `MY_Log` file for `Monolog` PSR3 Logger Integration
+ - A simple `MY_Controller` class to extend for basic REST usage
+ - A revised `constants.php` with some cool, extra goodies
  - Luthier routing/middleware for Codeigniter 3
  - Chris Kacerguis/Phil Sturgeon's REST Library
  - Complete composer dependency control
  - Most commonly used libraries/helpers are autoloaded
  - Whoops Errors for Cool Kids integration
  - PHP Dotenv library integration
- - Proper environmental configuration setup
- - A series of robust helper files from CLI to Databases
- - Migration files for ci_sessions and the REST Library
- - Example Controller, Model, Migration and Routes to demonstrate the API
- - Example Postman documentation for the aforementioned example included in the Repo
- - And much more... take a look!
+ - A series of robust helper files from CLI's to Databases
+ - Migration files for all of the database tables, including `ci_sessions` and the REST Library
+ - Example Controllers, Routes, Model and Migration files to demonstrate the API
+   - Example Postman documentation for this is included
+ - And much more... It is best to just go ahead and take a look!
  
 ## Project Setup
 ### Install Dependencies
@@ -142,12 +134,12 @@ Navigate to localhost:8080 to run the development server
 2. Ensure that your web server 'points' to the `public_html` directory
  - Do NOT access the `public_html` directory directly from your browser [EG - `http:/mysite.com/public_html/`]. Always set your web server to 'point' to your `public_html` directory. This is done for security reasons.
 3. `$ cd path/to/application` and then run the `composer install` command
-4. Go to `application/config/ENVIRONMENT/database.php` and enter your database credentials (Where ENVIRONMENT is the environment you want to connect a database with, EG - production)
 
 If you want database sessions, and to use the included API examples:
-1. Go to `application/config/ENVIRONMENT/config.php` and change the session type to database sessions located on `line 382` (Where ENVIRONMENT is the environment you want to configure the sessions for)
-2. Open your command line tool (EG - Git Bash) and run `$ cd path/to/public_html` then run the migration command `$ php index.php luthier migrate`
-3. Access your new API and Enjoy!
+1. Go to `application/config/ENVIRONMENT/database.php` and enter your database credentials
+2. Go to `application/config/ENVIRONMENT/config.php` and change the session type to database sessions located on `line 382`
+3. Open your command line tool (EG - Git Bash) and run `$ cd path/to/public_html` then run the migration command `$ php index.php luthier migrate`
+4. Access your new API and Enjoy!
 
 ## Other notes
 - Please read the docs of the Luthier-CI package if you've questions regarding routing and middleware. You can find the docs for that plugin [here](https://github.com/ingeniasoftware/luthier-ci)
@@ -188,23 +180,23 @@ Where version is the version of the migration to run. If it's omitted, it will p
 
 Examples
 ````
-$ php index.php luthier migrate version
+$ php index.php luthier migrate
 ````
 This will migrate to the latest available version
 
 ````
-$ php index.php luthier migrate version 20170706025420
+$ php index.php luthier migrate 20170706025420
 ````
 This will run the  `20170706025420_create_table_users` migration file
 
 It's also possible to use one of these special values as version:
 
  - reverse: reverses ALL migrations
- - refresh: reverses ALL migrations and then proceeds to migrate to the latest available version
-
-Examples
 ````
 $ php index.php luthier migrate reverse
+````
+ - refresh: reverses ALL migrations and then proceeds to migrate to the latest available version
+ ````
 $ php index.php luthier migrate refresh
 ````
 
