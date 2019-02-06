@@ -56,9 +56,9 @@ class JWTController extends MY_Controller
             $this->response([
                 'message' => 'Key Mismatch',
                 'success' => true,
-                'status'  => HTTP_UNAUTHORIZED,
+                'status'  => HTTP_BAD_REQUEST,
                 'jwt'     => null,
-            ], HTTP_OK);
+            ], HTTP_BAD_REQUEST);
 
         } elseif (self::$key === $key && $jwt) {
             $this->response([
