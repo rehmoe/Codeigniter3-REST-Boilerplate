@@ -14,8 +14,7 @@ class JWTController extends MY_Controller
     private static $key = 'super-secret-key';
 
     /**
-     * A data array to encode and decode using the
-     * $key
+     * A data array to encode and decode using the $key
      *
      * @var array $payload
      */
@@ -34,13 +33,13 @@ class JWTController extends MY_Controller
      *
      * @see   \JWT::encode()
      *
-     * @param string|null $key
+     * @param string|null $key The secret key
      *
      * @throws DomainException
      */
     public function encode_get(string $key = null): void
     {
-        // Let's encode JWT
+        // Let's encode the JWT
         $jwt = $this->jwt->encode(self::$payload, $key);
 
         // Build the response
@@ -93,7 +92,7 @@ class JWTController extends MY_Controller
      */
     public function decode_get(string $jwt = null): void
     {
-        // Let's encode JWT
+        // Let's decode the JWT
         $payload = $this->jwt->decode($jwt, self::$key);
 
         // Build the response
