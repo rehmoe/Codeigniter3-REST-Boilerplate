@@ -1,4 +1,10 @@
 <?php
+/**
+ * AJAX/API Based Routing
+ *
+ * @link https://www.codeigniter.com/userguide3/general/routing.html
+ * @link https://github.com/ingeniasoftware/luthier-ci
+ */
 
 // ----------------------------- SESSIONS API ---------------------------------
 // Example resource routes for the `ci_sessions` database table
