@@ -60,7 +60,12 @@ class MY_Controller extends REST_Controller
         // Check to make sure we are running on PHP >= 7.2.0
         $minPhpVersion = '7.2.0';
         if (PHP_VERSION < $minPhpVersion) {
-            die("PHP Version of {$minPhpVersion} is required. Your PHP Version is " . PHP_VERSION);
+            // Generate the response
+            $this->response([
+                'message' => "PHP {$minPhpVersion} or greater is required. Your PHP Version is " . PHP_VERSION,
+                'success' => false,
+                'status'  => HTTP_NOT_ACCEPTABLE
+            ],HTTP_NOT_ACCEPTABLE);
         }
     }
 
