@@ -1,7 +1,20 @@
 {
   "name": "jason-napolitano/codeigniter3-rest-boilerplate",
-  "description": "Full Codeingiter 3 REST API Boilerplate",
+  "description": "Full CodeIgniter 3 REST API Boilerplate",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Jason Napolitano",
+      "email": "jnapolitanoit@gmail.com",
+      "role": "Lead Developer"
+    },
+    {
+      "name": "BCIT/Codeigniter Team",
+      "homepage": "http://codeigniter.com",
+      "role": "Framework Developers"
+    }
+  ],
+  "homepage": "https://github.com/jason-napolitano/Codeigniter3-REST-Boilerplate",
   "require": {
     "php": ">=7.2.0",
     "chriskacerguis/codeigniter-restserver": "3.0.*",
@@ -10,13 +23,16 @@
     "luthier/luthier": "^1.0",
     "monolog/monolog": "^1.23",
     "nesbot/carbon": "2.11.*",
-    "vlucas/phpdotenv": "3.3.*"
+    "vlucas/phpdotenv": "3.3.*",
+    "bookin/composer-api": "@dev"
   },
   "require-dev": {
     "crazycodr/standard-exceptions": "2.3.*",
     "filp/whoops": "2.3.*",
     "fzaninotto/faker": "1.8.*",
-    "mikey179/vfsStream": "1.6.*",
+    "mikey179/vfsStream": "1.6.*"
+  },
+  "suggest": {
     "symfony/console": "^4.2",
     "symfony/var-dumper": "4.2.*"
   },
